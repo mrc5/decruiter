@@ -12,17 +12,35 @@ class GenerateViewController: UIViewController {
     
     lazy var tableView = UITableView()
     
-    let data = [["textView"], ["dear", "name", "thank", "decruit"]]
+    let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye"]]
     let copyButton = UIButton()
+    
+    var content: String? {
+        didSet {
+            showCopyButton()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupTableView()
         setupButton()
+        disableButton()
         hideKeyboardWhenTappedAround()
 
         self.title = "decruiter"
+        
+        let barButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    private func showCopyButton() {
+        enableButton()
+    }
+    
+    @objc func refresh() {
+        disableButton()
     }
     
     private func setupView() {
@@ -34,7 +52,7 @@ class GenerateViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.groupTableViewBackground
-        tableView.separatorInset = UIEdgeInsetsMake(0, 24, 0, 0)
+        tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0)
         tableView.alwaysBounceVertical = true
         
         tableView.register(TextViewCell.self, forCellReuseIdentifier: "TextViewCell")
@@ -42,6 +60,7 @@ class GenerateViewController: UIViewController {
         tableView.register(ThankCell.self, forCellReuseIdentifier: "ThankCell")
         tableView.register(NameCell.self, forCellReuseIdentifier: "NameCell")
         tableView.register(DecruitCell.self, forCellReuseIdentifier: "DecruitCell")
+        tableView.register(ByeCell.self, forCellReuseIdentifier: "ByeCell")
         
         view.add(tableView)
         
@@ -52,10 +71,21 @@ class GenerateViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    private func setupButton() {
-        copyButton.backgroundColor = UIColor.blue
+    private func enableButton() {
+        copyButton.isEnabled = true
+        copyButton.setBackgroundColor(UIColor.blue, for: .normal)
         copyButton.setTitle("📥 kopieren", for: .normal)
         copyButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    private func disableButton() {
+        copyButton.isEnabled = false
+        copyButton.setTitle("kopieren", for: .disabled)
+        copyButton.setTitleColor(UIColor.lightGray, for: .disabled)
+        copyButton.setBackgroundColor(UIColor.gray, for: .disabled)
+    }
+    
+    private func setupButton() {
         copyButton.setTitleColor(UIColor.gray, for: .highlighted)
         copyButton.addTarget(self, action: #selector(copyButtonDidTapped), for: .touchUpInside)
         view.add(copyButton)
@@ -68,7 +98,8 @@ class GenerateViewController: UIViewController {
     }
     
     @objc func copyButtonDidTapped() {
-        
+        guard let string = content else { return }
+        UIPasteboard.general.string = string
     }
 }
 
@@ -106,6 +137,10 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DecruitCell", for: indexPath) as! DecruitCell
                 cell.selectionStyle = .none
                 return cell
+            case 4:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ByeCell", for: indexPath) as! ByeCell
+                cell.selectionStyle = .none
+                return cell
             default:
                 break
             }
@@ -113,17 +148,6 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
             assertionFailure("Section out of bounds")
         }
         return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            return "Herr oder Frau?"
-        default:
-            return nil
-        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -137,6 +161,8 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             return 50
         case 3:
+            return 50
+        case 4:
             return 50
         default:
             return 0

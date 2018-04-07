@@ -23,24 +23,22 @@ class NameCell: UITableViewCell {
     }
     
     private func setupView() {
-        emoji = UILabel()
-        emoji.text = "ℬ"
-        add(emoji)
-        
         textField = UITextField()
         textField.placeholder = "Name"
         add(textField)
         
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        textField.widthAnchor.constraint(equalToConstant: frame.width - 50).isActive = true
+        textField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        emoji = UILabel()
+        emoji.text = "📝📝"
+        add(emoji)
+        
         emoji.translatesAutoresizingMaskIntoConstraints = false
         emoji.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         emoji.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        textField.leadingAnchor.constraint(equalTo: emoji.trailingAnchor, constant: 8).isActive = true
-        textField.widthAnchor.constraint(equalToConstant: frame.width - 8).isActive = true
-        textField.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        textField.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        textField.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        emoji.trailingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -8).isActive = true
     }
 }
