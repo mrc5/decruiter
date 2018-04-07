@@ -31,7 +31,7 @@ class ThankCell: UITableViewCell {
         
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonView.widthAnchor.constraint(equalToConstant: 128).isActive = true
+        buttonView.widthAnchor.constraint(equalToConstant: 188).isActive = true
         buttonView.heightAnchor.constraint(equalToConstant: 36).isActive = true
         buttonView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
@@ -42,6 +42,7 @@ class ThankCell: UITableViewCell {
         thankButton.setTitleColor(UIColor.white, for: .normal)
         thankButton.layer.cornerRadius = 10
         thankButton.clipsToBounds = true
+        thankButton.addTarget(self, action: #selector(thankButtonTapped), for: .touchUpInside)
         buttonView.add(thankButton)
         
         thankEvenMoreButton = UIButton()
@@ -51,16 +52,17 @@ class ThankCell: UITableViewCell {
         thankEvenMoreButton.setTitleColor(UIColor.white, for: .normal)
         thankEvenMoreButton.layer.cornerRadius = 10
         thankEvenMoreButton.clipsToBounds = true
+        thankEvenMoreButton.addTarget(self, action: #selector(thankEvenMoreButtonTapped), for: .touchUpInside)
         buttonView.add(thankEvenMoreButton)
         
         emoji = UILabel()
-        emoji.text = "🙏"
+        emoji.text = "🙏🙏"
         add(emoji)
         
         emoji.translatesAutoresizingMaskIntoConstraints = false
         emoji.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         emoji.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        emoji.trailingAnchor.constraint(equalTo: buttonView.leadingAnchor, constant: -28).isActive = true
+        emoji.trailingAnchor.constraint(equalTo: buttonView.leadingAnchor, constant: -8).isActive = true
         
         thankButton.translatesAutoresizingMaskIntoConstraints = false
         thankEvenMoreButton.translatesAutoresizingMaskIntoConstraints = false
@@ -73,5 +75,21 @@ class ThankCell: UITableViewCell {
         thankEvenMoreButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
         thankEvenMoreButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         thankEvenMoreButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    }
+    
+    @objc func thankButtonTapped() {
+        thankButton.isSelected = !thankButton.isSelected
+        
+        if thankEvenMoreButton.isSelected {
+            thankEvenMoreButton.isSelected = false
+        }
+    }
+    
+    @objc func thankEvenMoreButtonTapped() {
+        thankEvenMoreButton.isSelected = !thankEvenMoreButton.isSelected
+        
+        if thankButton.isSelected {
+            thankButton.isSelected = false
+        }
     }
 }

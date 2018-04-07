@@ -12,7 +12,7 @@ class GenerateViewController: UIViewController {
     
     lazy var tableView = UITableView()
     
-    let data = [["textView"], ["dear", "name", "thank"]]
+    let data = [["textView"], ["dear", "name", "thank", "decruit"]]
     let copyButton = UIButton()
 
     override func viewDidLoad() {
@@ -34,13 +34,14 @@ class GenerateViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.groupTableViewBackground
-        tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0)
+        tableView.separatorInset = UIEdgeInsetsMake(0, 24, 0, 0)
         tableView.alwaysBounceVertical = true
         
         tableView.register(TextViewCell.self, forCellReuseIdentifier: "TextViewCell")
         tableView.register(DearCell.self, forCellReuseIdentifier: "DearCell")
         tableView.register(ThankCell.self, forCellReuseIdentifier: "ThankCell")
         tableView.register(NameCell.self, forCellReuseIdentifier: "NameCell")
+        tableView.register(DecruitCell.self, forCellReuseIdentifier: "DecruitCell")
         
         view.add(tableView)
         
@@ -101,6 +102,10 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ThankCell", for: indexPath) as! ThankCell
                 cell.selectionStyle = .none
                 return cell
+            case 3:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DecruitCell", for: indexPath) as! DecruitCell
+                cell.selectionStyle = .none
+                return cell
             default:
                 break
             }
@@ -130,6 +135,8 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 50
         case 2:
+            return 50
+        case 3:
             return 50
         default:
             return 0

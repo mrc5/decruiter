@@ -18,6 +18,8 @@
 		2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */; };
 		2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */; };
 		2C3AD297205AFDEE00A32EF1 /* ThankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD296205AFDEE00A32EF1 /* ThankCell.swift */; };
+		2C3EC3312078C76A0022D051 /* DecruitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EC3302078C76A0022D051 /* DecruitCell.swift */; };
+		2C3EC3332078CF510022D051 /* ByeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EC3322078CF510022D051 /* ByeCell.swift */; };
 		2C8726452060347600D3BAB2 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8726442060347600D3BAB2 /* NameCell.swift */; };
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
@@ -56,6 +58,8 @@
 		2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		2C3AD296205AFDEE00A32EF1 /* ThankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankCell.swift; sourceTree = "<group>"; };
+		2C3EC3302078C76A0022D051 /* DecruitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecruitCell.swift; sourceTree = "<group>"; };
+		2C3EC3322078CF510022D051 /* ByeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByeCell.swift; sourceTree = "<group>"; };
 		2C8726442060347600D3BAB2 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		2CBBD63B205BCC68004B372F /* decruiterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = decruiterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBBD63D205BCC68004B372F /* decruiterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = decruiterUITests.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				2C3AD290205AEA8E00A32EF1 /* DearCell.swift */,
 				2C8726442060347600D3BAB2 /* NameCell.swift */,
 				2C3AD296205AFDEE00A32EF1 /* ThankCell.swift */,
+				2C3EC3302078C76A0022D051 /* DecruitCell.swift */,
+				2C3EC3322078CF510022D051 /* ByeCell.swift */,
 				2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */,
 				2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */,
 				2C380EF02059A641009B597F /* UIViewExtension.swift */,
@@ -283,10 +289,12 @@
 				2C3AD297205AFDEE00A32EF1 /* ThankCell.swift in Sources */,
 				2C3AD291205AEA8E00A32EF1 /* DearCell.swift in Sources */,
 				2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */,
+				2C3EC3332078CF510022D051 /* ByeCell.swift in Sources */,
 				2C380EF32059AA25009B597F /* TextViewCell.swift in Sources */,
 				2C380ED12059A39B009B597F /* GenerateViewController.swift in Sources */,
 				2C380ECF2059A39B009B597F /* AppDelegate.swift in Sources */,
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
+				2C3EC3312078C76A0022D051 /* DecruitCell.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
