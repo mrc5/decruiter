@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>decruiterUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2C380ECA2059A39B009B597F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2C380EDE2059A39B009B597F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2CBBD63A205BCC68004B372F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

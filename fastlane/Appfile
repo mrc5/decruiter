@@ -1,0 +1,8 @@
+app_identifier("com.decruiter") # The bundle identifier of your app
+apple_id("hopp.marcus@gmx.de") # Your Apple email address
+
+itc_team_id "97088804" # iTunes Connect Team ID
+team_id "P44T5L7ZND" # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
