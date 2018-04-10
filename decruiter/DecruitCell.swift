@@ -76,6 +76,13 @@ class DecruitCell: UITableViewCell {
         
         if notAtTheMomentButton.isSelected {
             notAtTheMomentButton.isSelected = false
+            Composer.decruit = nil
+        }
+        
+        if neverButton.isSelected {
+            Composer.decruit = .never
+        } else {
+            Composer.decruit = nil
         }
     }
     
@@ -84,6 +91,13 @@ class DecruitCell: UITableViewCell {
         
         if neverButton.isSelected {
             neverButton.isSelected = false
+            Composer.decruit = nil
+        }
+        
+        if notAtTheMomentButton.isSelected {
+            Composer.decruit = .notAtTheMoment
+        } else {
+            Composer.decruit = nil
         }
     }
 

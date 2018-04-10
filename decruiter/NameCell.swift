@@ -25,6 +25,7 @@ class NameCell: UITableViewCell {
     private func setupView() {
         textField = UITextField()
         textField.placeholder = "Name"
+        textField.delegate = self
         add(textField)
         
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -40,5 +41,12 @@ class NameCell: UITableViewCell {
         emoji.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8).isActive = true
         emoji.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         emoji.trailingAnchor.constraint(equalTo: textField.leadingAnchor, constant: -8).isActive = true
+    }
+}
+
+extension NameCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let name = textField.text else { return }
+        Composer.name = name
     }
 }
