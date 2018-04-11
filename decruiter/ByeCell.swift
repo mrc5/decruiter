@@ -77,14 +77,8 @@ class ByeCell: UITableViewCell {
         
         if thankyouSOmuchByeButton.isSelected {
             thankyouSOmuchByeButton.isSelected = false
-            Composer.bye = nil
         }
-        
-        if kThxByeButton.isSelected {
-            Composer.bye = .kThxBye
-        } else {
-            Composer.bye = nil
-        }
+        Composer.updateBye(Bye.kThxBye)
     }
     
     @objc func thankYouSOmuchByeButtonTapped() {
@@ -93,11 +87,6 @@ class ByeCell: UITableViewCell {
         if kThxByeButton.isSelected {
             kThxByeButton.isSelected = false
         }
-        
-        if thankyouSOmuchByeButton.isSelected {
-            Composer.bye = .thankyouSOmuchBye
-        } else {
-            Composer.bye = nil
-        }
+        Composer.updateBye(Bye.thankyouSOmuchBye)
     }
 }

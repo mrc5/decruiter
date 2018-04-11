@@ -82,14 +82,8 @@ class ThankCell: UITableViewCell {
         
         if thankEvenMoreButton.isSelected {
             thankEvenMoreButton.isSelected = false
-            Composer.thank = nil
         }
-        
-        if thankButton.isSelected {
-            Composer.thank = .thankYou
-        } else {
-            Composer.thank = nil
-        }
+        Composer.updateThank(Thank.thankYou)
     }
     
     @objc func thankEvenMoreButtonTapped() {
@@ -97,13 +91,7 @@ class ThankCell: UITableViewCell {
         
         if thankButton.isSelected {
             thankButton.isSelected = false
-            Composer.thank = nil
         }
-        
-        if thankEvenMoreButton.isSelected {
-            Composer.thank = .thankYouSoMuch
-        } else {
-            Composer.thank = nil
-        }
+        Composer.updateThank(Thank.thankYouSoMuch)
     }
 }

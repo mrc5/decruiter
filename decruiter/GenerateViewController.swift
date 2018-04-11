@@ -136,8 +136,8 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as! TextViewCell
-            cell.composerDelegate = self
             cell.selectionStyle = .none
+            cell.composerDelegate = self
             return cell
         case 1:
             let row = indexPath.row
@@ -192,21 +192,10 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension GenerateViewController: ComposerDelegate {
-    @objc func updateMessage() {
+    func updateMessage() {
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextViewCell
-        guard
-            let dear = Composer.dear?.rawValue ,
-            let name = Composer.name,
-            let thank = Composer.thank?.rawValue,
-            let decruit = Composer.decruit?.rawValue,
-            let bye = Composer.bye?.rawValue
-        else {
-            let stdTxt = "Hier steht die Vorschau"
-            cell.textView.text = stdTxt
-            return
-        }
-        let newMessage = dear + name + thank + decruit + bye
-        cell.textView.text = newMessage
+        let text = "\(Composer.data[0]), \(Composer.data[1])\n\n\(Composer.data[2]) \(Composer.data[3])\n\n\(Composer.data[4])"
+        cell.textView.text = text
     }
 }
 

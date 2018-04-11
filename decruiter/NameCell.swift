@@ -47,6 +47,6 @@ class NameCell: UITableViewCell {
 extension NameCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let name = textField.text else { return }
-        Composer.name = name
+        Composer.updateName(name)
     }
 }

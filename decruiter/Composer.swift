@@ -34,9 +34,28 @@ enum Bye: String {
 }
 
 class Composer {
-    static var dear: Dear?
-    static var name: String?
-    static var thank: Thank?
-    static var decruit: Decruit?
-    static var bye: Bye?
+    
+    static var data = [
+        "Herr oder Frau?",
+        "Nachname",
+        "Danken Sie für die Anfrage.",
+        "Sind Sie bereit für etwas Neues?",
+        "Bedanken Sie sich."
+    ]
+    
+    class func updateDear(_ dear: Dear) {
+        data.insert(dear.rawValue, at: 0)
+    }
+    class func updateName(_ name: String) {
+        data.insert(name, at: 1)
+    }
+    class func updateThank(_ thank: Thank) {
+        data.insert(thank.rawValue, at: 2)
+    }
+    class func updateDecruit(_ decruit: Decruit) {
+        data.insert(decruit.rawValue, at: 3)
+    }
+    class func updateBye(_ bye: Bye) {
+        data.insert(bye.rawValue, at: 4)
+    }
 }
