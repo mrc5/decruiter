@@ -60,6 +60,24 @@ class GenerateViewController: UIViewController {
     }
     
     @objc func refresh() {
+        let textViewCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextViewCell
+        let dearCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! DearCell
+        dearCell.madamButton.isSelected = false
+        dearCell.sirButton.isSelected = false
+        let nameCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! NameCell
+        nameCell.textField.text = nil
+        let thankCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! ThankCell
+        thankCell.thankButton.isSelected = false
+        thankCell.thankEvenMoreButton.isSelected = false
+        let decruitCell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! DecruitCell
+        decruitCell.neverButton.isSelected = false
+        decruitCell.notAtTheMomentButton.isSelected = false
+        let byeCell = tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! ByeCell
+        byeCell.kThxByeButton.isSelected = false
+        byeCell.thankyouSOmuchByeButton.isSelected = false
+        
+//        Composer.data = ["", "", "", "", ""]
+        
         disableButton()
     }
     

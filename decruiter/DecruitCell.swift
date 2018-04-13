@@ -11,8 +11,8 @@ import UIKit
 class DecruitCell: UITableViewCell {
     private let emoji = UILabel()
     private let buttonView = UIView()
-    private let neverButton = UIButton()
-    private let notAtTheMomentButton = UIButton()
+    let neverButton = UIButton()
+    let notAtTheMomentButton = UIButton()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

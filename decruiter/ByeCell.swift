@@ -12,8 +12,8 @@ class ByeCell: UITableViewCell {
     
     private let emoji = UILabel()
     private let buttonView = UIView()
-    private let kThxByeButton = UIButton()
-    private let thankyouSOmuchByeButton = UIButton()
+    let kThxByeButton = UIButton()
+    let thankyouSOmuchByeButton = UIButton()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
