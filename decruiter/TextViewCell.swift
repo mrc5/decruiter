@@ -30,6 +30,8 @@ class TextViewCell: UITableViewCell {
         textView = UITextView(frame: .zero)
         textView.text = "Hier steht die Vorschau"
         textView.delegate = self
+        textView.font = UIFont.systemFont(ofSize: 19)
+        textView.keyboardAppearance = .dark
         self.add(textView)
         
         textView.translatesAutoresizingMaskIntoConstraints = false
