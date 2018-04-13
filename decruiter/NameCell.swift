@@ -49,4 +49,7 @@ extension NameCell: UITextFieldDelegate {
         guard let name = textField.text else { return }
         Composer.updateName(name)
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         return textField.resignFirstResponder()
+    }
 }

@@ -42,7 +42,7 @@ class Composer {
         data[0] = dear.rawValue
     }
     class func updateName(_ name: String) {
-        data[1] = name
+        data[1] = "\(name),"
     }
     class func updateThank(_ thank: Thank) {
         data[2] = thank.rawValue

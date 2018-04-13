@@ -26,6 +26,7 @@ class GenerateViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupTableView()
+        print(tableView.contentInset)
         setupButton()
         disableButton()
         hideKeyboardWhenTappedAround()
@@ -41,13 +42,13 @@ class GenerateViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
         }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
     }
@@ -63,23 +64,23 @@ class GenerateViewController: UIViewController {
     
     @objc func refresh() {
         let textViewCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextViewCell
-        let dearCell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! DearCell
+        let dearCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! DearCell
         dearCell.madamButton.isSelected = false
         dearCell.sirButton.isSelected = false
-        let nameCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! NameCell
+        let nameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! NameCell
         nameCell.textField.text = nil
-        let thankCell = tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! ThankCell
+        let thankCell = tableView.cellForRow(at: IndexPath(row: 2, section: 1)) as! ThankCell
         thankCell.thankButton.isSelected = false
         thankCell.thankEvenMoreButton.isSelected = false
-        let decruitCell = tableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! DecruitCell
+        let decruitCell = tableView.cellForRow(at: IndexPath(row: 3, section: 1)) as! DecruitCell
         decruitCell.neverButton.isSelected = false
         decruitCell.notAtTheMomentButton.isSelected = false
-        let byeCell = tableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! ByeCell
+        let byeCell = tableView.cellForRow(at: IndexPath(row: 4, section: 1)) as! ByeCell
         byeCell.kThxByeButton.isSelected = false
         byeCell.thankyouSOmuchByeButton.isSelected = false
         
-//        Composer.data = ["", "", "", "", ""]
-        
+        Composer.data = ["", "", "", "", ""]
+        textViewCell.textView.text = "Hier steht die Vorschau"
         disableButton()
     }
     
@@ -144,7 +145,7 @@ class GenerateViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
             self?.confirmationAlertView.alpha = 1
         }) { (finished) in
-            UIView.animate(withDuration: 1.2, animations: { [weak self] in
+            UIView.animate(withDuration: 1.5, animations: { [weak self] in
                 self?.confirmationAlertView.alpha = 0
             })
         }
@@ -188,7 +189,7 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as! TextViewCell
             cell.selectionStyle = .none
             Composer.updated = {
-                let text = "\(Composer.data[0]) \(Composer.data[1]),\n\n\(Composer.data[2])\n\(Composer.data[3])\n\n\(Composer.data[4])"
+                let text = "\(Composer.data[0]) \(Composer.data[1])\n\n\(Composer.data[2])\n\(Composer.data[3])\n\n\(Composer.data[4])"
                 cell.textView.text = text
                 self.content = text
             }
