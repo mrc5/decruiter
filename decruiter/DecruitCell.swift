@@ -77,6 +77,7 @@ class DecruitCell: UITableViewCell {
         if notAtTheMomentButton.isSelected {
             notAtTheMomentButton.isSelected = false
         }
+        Composer.updateDecruit(Decruit.never)
     }
     
     @objc func notAtTheMomentButtonTapped() {
@@ -85,6 +86,6 @@ class DecruitCell: UITableViewCell {
         if neverButton.isSelected {
             neverButton.isSelected = false
         }
+        Composer.updateDecruit(Decruit.notAtTheMoment)
     }
-
 }
