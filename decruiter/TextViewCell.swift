@@ -10,7 +10,6 @@ import UIKit
 
 class TextViewCell: UITableViewCell {
     var textView: UITextView!
-    var composerDelegate: ComposerDelegate!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

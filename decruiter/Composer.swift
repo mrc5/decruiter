@@ -8,14 +8,9 @@
 
 import Foundation
 
-
-protocol ComposerDelegate: class {
-    func updateMessage()
-}
-
 enum Dear: String {
-    case mr = "Herr"
-    case mrs = "Frau"
+    case mr = "Hallo Herr"
+    case mrs = "Hallo Frau"
 }
 
 enum Thank: String {
@@ -35,27 +30,27 @@ enum Bye: String {
 
 class Composer {
     
-    static var data = [
-        "Herr oder Frau?",
-        "Nachname",
-        "Danken Sie für die Anfrage.",
-        "Sind Sie bereit für etwas Neues?",
-        "Bedanken Sie sich."
-    ]
+    static var updated = {}
+    
+    static var data = ["", "", "", "", ""] {
+        didSet {
+            updated()
+        }
+    }
     
     class func updateDear(_ dear: Dear) {
-        data.insert(dear.rawValue, at: 0)
+        data[0] = dear.rawValue
     }
     class func updateName(_ name: String) {
-        data.insert(name, at: 1)
+        data[1] = name
     }
     class func updateThank(_ thank: Thank) {
-        data.insert(thank.rawValue, at: 2)
+        data[2] = thank.rawValue
     }
     class func updateDecruit(_ decruit: Decruit) {
-        data.insert(decruit.rawValue, at: 3)
+        data[3] = decruit.rawValue
     }
     class func updateBye(_ bye: Bye) {
-        data.insert(bye.rawValue, at: 4)
+        data[4] = bye.rawValue
     }
 }

@@ -14,6 +14,7 @@ class GenerateViewController: UIViewController {
     
     let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye"]]
     let copyButton = UIButton()
+    let confirmationAlertView = UIView()
     
     var content: String? {
         didSet {
@@ -28,6 +29,7 @@ class GenerateViewController: UIViewController {
         setupButton()
         disableButton()
         hideKeyboardWhenTappedAround()
+        setupConfirmationAlert()
 
         self.title = "decruiter"
         
@@ -120,6 +122,36 @@ class GenerateViewController: UIViewController {
     @objc func copyButtonDidTapped() {
         guard let string = content else { return }
         UIPasteboard.general.string = string
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+            self?.confirmationAlertView.alpha = 1
+        }) { (finished) in
+            UIView.animate(withDuration: 1.2, animations: { [weak self] in
+                self?.confirmationAlertView.alpha = 0
+            })
+        }
+    }
+    
+    private func setupConfirmationAlert() {
+        confirmationAlertView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.6)
+        confirmationAlertView.alpha = 0
+        confirmationAlertView.layer.cornerRadius = 10
+        tableView.add(confirmationAlertView)
+        
+        let label = UILabel()
+        label.text = "👍"
+        label.font = UIFont.boldSystemFont(ofSize: 48)
+        confirmationAlertView.add(label)
+        
+        confirmationAlertView.translatesAutoresizingMaskIntoConstraints = false
+        confirmationAlertView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        confirmationAlertView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        confirmationAlertView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+        confirmationAlertView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerYAnchor.constraint(equalTo: confirmationAlertView.centerYAnchor).isActive = true
+        label.centerXAnchor.constraint(equalTo: confirmationAlertView.centerXAnchor).isActive = true
     }
 }
 
@@ -137,7 +169,11 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as! TextViewCell
             cell.selectionStyle = .none
-            cell.composerDelegate = self
+            Composer.updated = {
+                let text = "\(Composer.data[0]) \(Composer.data[1]),\n\n\(Composer.data[2])\n\(Composer.data[3])\n\n\(Composer.data[4])"
+                cell.textView.text = text
+                self.content = text
+            }
             return cell
         case 1:
             let row = indexPath.row
@@ -188,14 +224,6 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
-    }
-}
-
-extension GenerateViewController: ComposerDelegate {
-    func updateMessage() {
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextViewCell
-        let text = "\(Composer.data[0]), \(Composer.data[1])\n\n\(Composer.data[2]) \(Composer.data[3])\n\n\(Composer.data[4])"
-        cell.textView.text = text
     }
 }
 
