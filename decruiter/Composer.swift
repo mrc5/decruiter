@@ -20,7 +20,7 @@ enum Thank: String {
 
 enum Decruit: String {
     case never = "Ich bin nicht interessiert."
-    case notAtTheMoment = "Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen"
+    case notAtTheMoment = "Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen."
 }
 
 enum Bye: String {
@@ -32,7 +32,7 @@ class Composer {
     
     static var updated = {}
     
-    static var data = ["", "", "", "", ""] {
+    static var data = ["", "", "", "", "", ""] {
         didSet {
             updated()
         }
@@ -42,7 +42,7 @@ class Composer {
         data[0] = dear.rawValue
     }
     class func updateName(_ name: String) {
-        data[1] = name
+        data[1] = "\(name),"
     }
     class func updateThank(_ thank: Thank) {
         data[2] = thank.rawValue
@@ -52,5 +52,8 @@ class Composer {
     }
     class func updateBye(_ bye: Bye) {
         data[4] = bye.rawValue
+    }
+    class func updateOwnName(_ ownName: String) {
+        data[5] = ownName
     }
 }

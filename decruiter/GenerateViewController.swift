@@ -10,9 +10,18 @@ import UIKit
 
 class GenerateViewController: UIViewController {
     
+    var onboardingWasShown: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "onboardingWasShown")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "onboardingWasShown")
+        }
+    }
+    
     lazy var tableView = UITableView()
     
-    let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye"]]
+    let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye", "ownName"]]
     let copyButton = UIButton()
     let confirmationAlertView = UIView()
     
@@ -38,16 +47,31 @@ class GenerateViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        if !onboardingWasShown {
+            setupOnboardingAlert()
+        }
+    }
+    
+    private func setupOnboardingAlert() {
+        let title = "Hallo!"
+        let message = "Du willst in Windeseile eine Antwort erstellen? Kein Problem!\nNur eine kurze Information für dich: Der Tap auf den Kopieren-Button kopiert die zu sendende Nachricht in deine Zwischenablage.\nSichere also mögliche Daten die du noch brauchst!"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .cancel) { [weak self] (action) in
+            self?.onboardingWasShown = true
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
         }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         }
     }
@@ -62,6 +86,26 @@ class GenerateViewController: UIViewController {
     }
     
     @objc func refresh() {
+        let textViewCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! TextViewCell
+        let dearCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! DearCell
+        dearCell.madamButton.isSelected = false
+        dearCell.sirButton.isSelected = false
+        let nameCell = tableView.cellForRow(at: IndexPath(row: 1, section: 1)) as! NameCell
+        nameCell.textField.text = nil
+        let thankCell = tableView.cellForRow(at: IndexPath(row: 2, section: 1)) as! ThankCell
+        thankCell.thankButton.isSelected = false
+        thankCell.thankEvenMoreButton.isSelected = false
+        let decruitCell = tableView.cellForRow(at: IndexPath(row: 3, section: 1)) as! DecruitCell
+        decruitCell.neverButton.isSelected = false
+        decruitCell.notAtTheMomentButton.isSelected = false
+        let byeCell = tableView.cellForRow(at: IndexPath(row: 4, section: 1)) as! ByeCell
+        byeCell.kThxByeButton.isSelected = false
+        byeCell.thankyouSOmuchByeButton.isSelected = false
+        let ownNameCell = tableView.cellForRow(at: IndexPath(row: 5, section: 1)) as! OwnNameCell
+        ownNameCell.textField.text = nil
+        
+        Composer.data = ["", "", "", "", "", ""]
+        textViewCell.textView.text = "Hier steht die Vorschau"
         disableButton()
     }
     
@@ -83,6 +127,7 @@ class GenerateViewController: UIViewController {
         tableView.register(NameCell.self, forCellReuseIdentifier: "NameCell")
         tableView.register(DecruitCell.self, forCellReuseIdentifier: "DecruitCell")
         tableView.register(ByeCell.self, forCellReuseIdentifier: "ByeCell")
+        tableView.register(OwnNameCell.self, forCellReuseIdentifier: "OwnNameCell")
         
         view.add(tableView)
         
@@ -123,17 +168,17 @@ class GenerateViewController: UIViewController {
         guard let string = content else { return }
         UIPasteboard.general.string = string
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseOut, animations: { [weak self] in
             self?.confirmationAlertView.alpha = 1
         }) { (finished) in
-            UIView.animate(withDuration: 1.2, animations: { [weak self] in
+            UIView.animate(withDuration: 1.8, animations: { [weak self] in
                 self?.confirmationAlertView.alpha = 0
             })
         }
     }
     
     private func setupConfirmationAlert() {
-        confirmationAlertView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.6)
+        confirmationAlertView.backgroundColor = UIColor.darkGray.withAlphaComponent(0.8)
         confirmationAlertView.alpha = 0
         confirmationAlertView.layer.cornerRadius = 10
         tableView.add(confirmationAlertView)
@@ -170,7 +215,7 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as! TextViewCell
             cell.selectionStyle = .none
             Composer.updated = {
-                let text = "\(Composer.data[0]) \(Composer.data[1]),\n\n\(Composer.data[2])\n\(Composer.data[3])\n\n\(Composer.data[4])"
+                let text = "\(Composer.data[0]) \(Composer.data[1])\n\n\(Composer.data[2])\n\(Composer.data[3])\n\n\(Composer.data[4])\n\(Composer.data[5])"
                 cell.textView.text = text
                 self.content = text
             }
@@ -198,6 +243,9 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ByeCell", for: indexPath) as! ByeCell
                 cell.selectionStyle = .none
                 return cell
+            case 5:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "OwnNameCell", for: indexPath) as! OwnNameCell
+                return cell
             default:
                 break
             }
@@ -220,6 +268,8 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             return 50
         case 4:
+            return 50
+        case 5:
             return 50
         default:
             return 0

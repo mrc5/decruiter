@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0B7B0C20811442006CD214 /* OwnNameCell.swift */; };
 		2C14C7532078DFBA00C39462 /* DearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14C74D2078DFB900C39462 /* DearCell.swift */; };
 		2C14C7542078DFBA00C39462 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14C74E2078DFB900C39462 /* NameCell.swift */; };
 		2C14C7552078DFBA00C39462 /* DecruitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C14C74F2078DFB900C39462 /* DecruitCell.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C0B7B0C20811442006CD214 /* OwnNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnNameCell.swift; sourceTree = "<group>"; };
 		2C14C74D2078DFB900C39462 /* DearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DearCell.swift; sourceTree = "<group>"; };
 		2C14C74E2078DFB900C39462 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		2C14C74F2078DFB900C39462 /* DecruitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecruitCell.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				2C380ED02059A39B009B597F /* GenerateViewController.swift */,
 				2C14C7592078E24700C39462 /* Composer.swift */,
 				2C14C74D2078DFB900C39462 /* DearCell.swift */,
+				2C0B7B0C20811442006CD214 /* OwnNameCell.swift */,
 				2C14C74F2078DFB900C39462 /* DecruitCell.swift */,
 				2C14C74E2078DFB900C39462 /* NameCell.swift */,
 				2C14C7502078DFB900C39462 /* TextViewCell.swift */,
@@ -298,6 +301,7 @@
 				2C14C7552078DFBA00C39462 /* DecruitCell.swift in Sources */,
 				2C14C7532078DFBA00C39462 /* DearCell.swift in Sources */,
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
+				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,
 			);
