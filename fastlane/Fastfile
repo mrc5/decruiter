@@ -22,7 +22,7 @@ platform :ios do
   end
 
   desc "Testflight lane"
-  lane :testflight do
+  lane :decuiter_testflight do
     # Ensure that your git status is not dirty
     ensure_git_status_clean
 
