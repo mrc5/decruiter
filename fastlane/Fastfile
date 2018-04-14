@@ -31,9 +31,7 @@ platform :ios do
 
     # Increment the build number (not the version number)
     # Providing the xcodeproj is optional
-    increment_build_number(
-      build_number: latest_testflight_build_number + 1
-    )
+    increment_build_number
 
     # Commit the version bump
     commit_version_bump
