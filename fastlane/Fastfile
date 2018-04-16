@@ -46,7 +46,7 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
-  desc: "Release lane"
+  desc "Release lane"
   lane :decruiter_release do
     # Ensure that your git status is not dirty
     ensure_git_status_clean
