@@ -39,14 +39,17 @@ class decruiterUITests: XCTestCase {
         tablesQuery/*@START_MENU_TOKEN@*/.buttons["Herr"]/*[[".cells.buttons[\"Herr\"]",".buttons[\"Herr\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.textFields["Name"]/*[[".cells.textFields[\"Name\"]",".textFields[\"Name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.keys["M"]/*[[".keyboards.keys[\"M\"]",".keys[\"M\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app/*@START_MENU_TOKEN@*/.keys["ü"]/*[[".keyboards.keys[\"ü\"]",".keys[\"ü\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let lKey = app/*@START_MENU_TOKEN@*/.keys["l"]/*[[".keyboards.keys[\"l\"]",".keys[\"l\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        lKey.tap()
-        lKey.tap()
-        
+        app.keys["u"].tap()
+        app.keys["s"].tap()
+        app.keys["t"].tap()
         let eKey = app/*@START_MENU_TOKEN@*/.keys["e"]/*[[".keyboards.keys[\"e\"]",".keys[\"e\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        eKey.tap()
+        app.keys["e"].tap()
+        app.keys["r"].tap()
+        app.keys["m"].tap()
+        app.keys["a"].tap()
+        let nKey = app.keys["n"]
+        nKey.tap()
+        nKey.tap()
         
         let rKey = app/*@START_MENU_TOKEN@*/.keys["r"]/*[[".keyboards.keys[\"r\"]",".keys[\"r\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         rKey.tap()
@@ -59,8 +62,6 @@ class decruiterUITests: XCTestCase {
         tablesQuery/*@START_MENU_TOKEN@*/.textFields["Dein Name"]/*[[".cells.textFields[\"Dein Name\"]",".textFields[\"Dein Name\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app/*@START_MENU_TOKEN@*/.keys["J"]/*[[".keyboards.keys[\"J\"]",".keys[\"J\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         eKey.tap()
-        
-        let nKey = app/*@START_MENU_TOKEN@*/.keys["n"]/*[[".keyboards.keys[\"n\"]",".keys[\"n\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         nKey.tap()
         app/*@START_MENU_TOKEN@*/.keys["s"]/*[[".keyboards.keys[\"s\"]",".keys[\"s\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         returnButton.tap()
