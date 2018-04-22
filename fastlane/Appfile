@@ -1,4 +1,4 @@
-app_identifier("com.decruiter") # The bundle identifier of your app
+app_identifier ENV['BUNDLE_ID'] # The bundle identifier of your app
 apple_id("hopp.marcus@gmx.de") # Your Apple email address
 
 itc_team_id "97088804" # iTunes Connect Team ID

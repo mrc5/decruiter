@@ -89,6 +89,7 @@ class DearCell: UITableViewCell {
         if madamButton.isSelected {
             madamButton.isSelected = false
         }
+        Composer.updateDear(Dear.mr)
     }
     
     @objc func madamButtonTapped() {
@@ -97,5 +98,6 @@ class DearCell: UITableViewCell {
         if sirButton.isSelected {
             sirButton.isSelected = false
         }
+        Composer.updateDear(Dear.mrs)
     }
 }

@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData/
+build.xcarchive
 
 ## Various settings
 *.pbxuser
@@ -15,7 +16,8 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
+xcuserdata
+*.Breakpoints_v2.xcbkptlist
 
 ## Other
 *.moved-aside
@@ -63,5 +65,5 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/Preview.html
-fastlane/screenshots
+screenshots
 fastlane/test_output

@@ -15,6 +15,60 @@ platform :ios do
   desc "Generate new localized screenshots"
   lane :screenshots do
     capture_screenshots(scheme: "decruiterUITests")
-    upload_to_app_store(skip_binary_upload: true, skip_metadata: true)
+
+  end
+  lane :beta do
+    build_app(scheme: "decruiter")
+  end
+
+  desc "Testflight lane"
+  lane :decruiter_testflight do
+    # Ensure that your git status is not dirty
+    ensure_git_status_clean
+
+    capture_screenshots(scheme: "decruiterUITests")
+    build_app(scheme: "decruiter")
+
+    # Increment the build number (not the version number)
+    # Providing the xcodeproj is optional
+    increment_build_number
+
+    # Commit the version bump
+    commit_version_bump
+
+    # Add a git tag for this build. This will automatically
+    # use an appropriate git tag name
+    add_git_tag
+
+    # Push the new commit and tag back to your git remote
+    push_to_git_remote
+
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "Release lane"
+  lane :decruiter_release do
+    # Ensure that your git status is not dirty
+    ensure_git_status_clean
+
+    capture_screenshots(scheme: "decruiterUITests")
+    build_app(scheme: "decruiter")
+
+    # Increment the build number (not the version number)
+    # Providing the xcodeproj is optional
+    increment_build_number
+
+    # Commit the version bump
+    commit_version_bump
+
+    # Add a git tag for this build. This will automatically
+    # use an appropriate git tag name
+    add_git_tag
+
+    # Push the new commit and tag back to your git remote
+    push_to_git_remote
+
+    # upload your app to iTunes Connect
+    upload_to_app_store
   end
 end
