@@ -23,6 +23,7 @@
 		2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C380EF02059A641009B597F /* UIViewExtension.swift */; };
 		2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */; };
 		2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */; };
+		2C3CF9F92092495800F370FA /* GenerateViewController_iPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3CF9F82092495800F370FA /* GenerateViewController_iPad.swift */; };
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		2C380EF02059A641009B597F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		2C3CF9F82092495800F370FA /* GenerateViewController_iPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewController_iPad.swift; sourceTree = "<group>"; };
 		2CBBD63B205BCC68004B372F /* decruiterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = decruiterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBBD63D205BCC68004B372F /* decruiterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = decruiterUITests.swift; sourceTree = "<group>"; };
 		2CBBD63F205BCC68004B372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				2C380ECE2059A39B009B597F /* AppDelegate.swift */,
 				2C380ED02059A39B009B597F /* GenerateViewController.swift */,
+				2C3CF9F82092495800F370FA /* GenerateViewController_iPad.swift */,
 				2C14C7592078E24700C39462 /* Composer.swift */,
 				2C14C74D2078DFB900C39462 /* DearCell.swift */,
 				2C0B7B0C20811442006CD214 /* OwnNameCell.swift */,
@@ -304,6 +307,7 @@
 				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,
+				2C3CF9F92092495800F370FA /* GenerateViewController_iPad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +482,7 @@
 				PROVISIONING_PROFILE = "3a9f7978-259f-47c1-bdf5-5d2abbf66930";
 				PROVISIONING_PROFILE_SPECIFIER = "decruiter Development";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -499,7 +503,7 @@
 				PROVISIONING_PROFILE = "4aadbf1b-2aa6-408c-ae42-43fde9f35b0f";
 				PROVISIONING_PROFILE_SPECIFIER = "decruiter Release";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
