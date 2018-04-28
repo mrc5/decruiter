@@ -9,6 +9,7 @@
 import UIKit
 
 class GenerateViewController: UIViewController {
+    let blackView = UIView()
     
     var onboardingWasShown: Bool {
         get {
@@ -45,11 +46,37 @@ class GenerateViewController: UIViewController {
         let barButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         self.navigationItem.rightBarButtonItem = barButton
         
+        let helpButton = UIBarButtonItem(title: "📭", style: .plain, target: self, action: #selector(showTemplates))
+        self.navigationItem.leftBarButtonItem = helpButton
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         if !onboardingWasShown {
             setupOnboardingAlert()
+        }
+    }
+    
+    @objc private func showTemplates() {
+        if let window = UIApplication.shared.keyWindow {
+            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            window.add(blackView)
+            blackView.frame = window.frame
+            blackView.alpha = 0
+            
+            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackView)))
+            
+            UIView.animate(withDuration: 0.3) {
+                self.blackView.alpha = 1
+            }
+        }
+    }
+    
+    @objc private func dismissBlackView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.blackView.alpha = 0
+        }) { (finished) in
+            self.blackView.removeFromSuperview()
         }
     }
     
