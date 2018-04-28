@@ -103,8 +103,9 @@ class GenerateViewController: UIViewController {
         byeCell.thankyouSOmuchByeButton.isSelected = false
         let ownNameCell = tableView.cellForRow(at: IndexPath(row: 5, section: 1)) as! OwnNameCell
         ownNameCell.textField.text = nil
-        
+
         Composer.data = ["", "", "", "", "", ""]
+        tableView.reloadData()
         textViewCell.textView.text = "Hier steht die Vorschau"
         disableButton()
     }
@@ -202,7 +203,7 @@ class GenerateViewController: UIViewController {
 
 extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return data.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data[section].count
