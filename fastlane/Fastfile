@@ -26,6 +26,8 @@ platform :ios do
     # Ensure that your git status is not dirty
     ensure_git_status_clean
 
+    version_number = get_version_number
+
     capture_screenshots(scheme: "decruiterUITests")
     build_app(scheme: "decruiter")
 
@@ -33,8 +35,11 @@ platform :ios do
     # Providing the xcodeproj is optional
     increment_build_number
 
+    # Getting the actual build number after incrementing
+    build_number = get_build_number
+
     # Commit the version bump
-    commit_version_bump
+    commit_version_bump(message: "New recruiter build for version #{version_number} with build number #{build_number}")
 
     # Add a git tag for this build. This will automatically
     # use an appropriate git tag name
