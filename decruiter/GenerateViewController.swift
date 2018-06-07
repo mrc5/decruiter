@@ -10,6 +10,9 @@ import UIKit
 
 class GenerateViewController: UIViewController {
     let blackView = UIView()
+    let templateView = UIView()
+    
+    private var window: UIWindow!
     
     var onboardingWasShown: Bool {
         get {
@@ -59,24 +62,34 @@ class GenerateViewController: UIViewController {
     
     @objc private func showTemplates() {
         if let window = UIApplication.shared.keyWindow {
+            self.window = window
             blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
             window.add(blackView)
             blackView.frame = window.frame
             blackView.alpha = 0
-            
             blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackView)))
             
-            UIView.animate(withDuration: 0.3) {
+            templateView.backgroundColor = UIColor.white
+            window.add(templateView)
+            
+            let height = UIScreen.main.bounds.size.height / 2.5
+            let y = window.frame.height - height
+            templateView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                 self.blackView.alpha = 1
-            }
+                self.templateView.frame = CGRect(x: 0, y: y, width: self.templateView.frame.width, height: self.templateView.frame.height)
+            }, completion: nil)
         }
     }
     
     @objc private func dismissBlackView() {
         UIView.animate(withDuration: 0.3, animations: {
             self.blackView.alpha = 0
+            self.templateView.frame = CGRect(x: 0, y: self.window.frame.height, width: self.templateView.frame.width, height: self.templateView.frame.height)
         }) { (finished) in
             self.blackView.removeFromSuperview()
+            self.templateView.removeFromSuperview()
         }
     }
     
