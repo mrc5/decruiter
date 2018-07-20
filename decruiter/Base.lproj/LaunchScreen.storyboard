@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,24 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_nostring" translatesAutoresizingMaskIntoConstraints="NO" id="NdK-cL-U7s">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="decruiter_logo_full_rgb" translatesAutoresizingMaskIntoConstraints="NO" id="AM7-R3-DWZ">
+                                <rect key="frame" x="34" y="-526.5" width="307" height="1719"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="decruiter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOU-Ru-ivT">
-                                <rect key="frame" x="95" y="303" width="185" height="60"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NdK-cL-U7s" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8jy-lR-atN"/>
-                            <constraint firstItem="NdK-cL-U7s" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NgD-HJ-CQ8"/>
-                            <constraint firstItem="NdK-cL-U7s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UQW-nY-hCt"/>
-                            <constraint firstItem="dOU-Ru-ivT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hhD-r1-01M"/>
-                            <constraint firstItem="NdK-cL-U7s" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="nQb-Eb-6G1"/>
-                            <constraint firstItem="dOU-Ru-ivT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uh2-OV-mFO"/>
+                            <constraint firstItem="AM7-R3-DWZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="FcC-lW-Siz"/>
+                            <constraint firstItem="AM7-R3-DWZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Nr2-ro-eLY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AM7-R3-DWZ" secondAttribute="trailing" constant="34" id="bNT-d8-RzO"/>
+                            <constraint firstItem="AM7-R3-DWZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iRk-RA-Srj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -46,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchscreen_nostring" width="828" height="1472"/>
+        <image name="decruiter_logo_full_rgb" width="5011" height="1719"/>
     </resources>
 </document>
