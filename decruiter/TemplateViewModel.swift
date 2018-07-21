@@ -33,7 +33,9 @@ class TemplateViewModel {
                 self?.templates = objects
                 
                 for object in objects {
-                    print("Object-ID: \(object.objectId!)")
+                    let name = object["title"] as! String
+                    let tag = object["tag"] as! String
+                    print("Object-Name: \(name) with Tag: \(tag)")
                 }
                 self?.viewDelegate?.showData()
             }

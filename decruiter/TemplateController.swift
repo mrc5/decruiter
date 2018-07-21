@@ -28,10 +28,16 @@ class TemplateController: UIViewController {
         
         viewModel = TemplateViewModel()
         viewModel?.viewDelegate = self
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        
+        collectionView.contentInset = UIEdgeInsetsMake(8, 8, 8, 8)
+        collectionView.alwaysBounceVertical = true
+        
+        collectionView.backgroundColor = UIColor.groupTableViewBackground
         collectionView.register(TemplateCell.self, forCellWithReuseIdentifier: "TemplateCell")
         view.add(collectionView)
     
@@ -71,7 +77,9 @@ extension TemplateController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension TemplateController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
+        guard let title = viewModel?.templates[indexPath.item]["title"] as? String else { return CGSize.zero }
+        let titleWidth: CGFloat = CGFloat(title.count) * 11.0
+        return CGSize(width: titleWidth, height: 50)
     }
 }
 
