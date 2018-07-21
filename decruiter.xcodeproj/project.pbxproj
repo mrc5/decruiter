@@ -28,6 +28,8 @@
 		2CB005402103495000C5C5CF /* TemplateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0053F2103495000C5C5CF /* TemplateController.swift */; };
 		2CB0054221034B0B00C5C5CF /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0054121034B0B00C5C5CF /* SettingsController.swift */; };
 		2CB0054421034B9C00C5C5CF /* MyTemplatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */; };
+		2CB005462103787C00C5C5CF /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB005452103787C00C5C5CF /* TemplateCell.swift */; };
+		2CB00548210378B100C5C5CF /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB00547210378B100C5C5CF /* TemplateViewModel.swift */; };
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		2CB0053F2103495000C5C5CF /* TemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateController.swift; sourceTree = "<group>"; };
 		2CB0054121034B0B00C5C5CF /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTemplatesController.swift; sourceTree = "<group>"; };
+		2CB005452103787C00C5C5CF /* TemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCell.swift; sourceTree = "<group>"; };
+		2CB00547210378B100C5C5CF /* TemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewModel.swift; sourceTree = "<group>"; };
 		2CBBD63B205BCC68004B372F /* decruiterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = decruiterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBBD63D205BCC68004B372F /* decruiterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = decruiterUITests.swift; sourceTree = "<group>"; };
 		2CBBD63F205BCC68004B372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				2C380ECE2059A39B009B597F /* AppDelegate.swift */,
 				2CB0053D210348DE00C5C5CF /* AppTabbarController.swift */,
 				2CB0053F2103495000C5C5CF /* TemplateController.swift */,
+				2CB00547210378B100C5C5CF /* TemplateViewModel.swift */,
+				2CB005452103787C00C5C5CF /* TemplateCell.swift */,
 				2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */,
 				2CB0054121034B0B00C5C5CF /* SettingsController.swift */,
 				2C380ED02059A39B009B597F /* GenerateViewController.swift */,
@@ -339,6 +345,8 @@
 				2C14C7532078DFBA00C39462 /* DearCell.swift in Sources */,
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
 				2CB0054421034B9C00C5C5CF /* MyTemplatesController.swift in Sources */,
+				2CB005462103787C00C5C5CF /* TemplateCell.swift in Sources */,
+				2CB00548210378B100C5C5CF /* TemplateViewModel.swift in Sources */,
 				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,

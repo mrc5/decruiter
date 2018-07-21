@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.enableLocalDatastore()
         Parse.initialize(with: configuration)
         
-        testRetrieve()
+//        testRetrieve()
     }
     
     func testSave() {
