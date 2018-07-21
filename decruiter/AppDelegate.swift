@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +23,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.viewControllers = [generateViewController]
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        setupParse()
         return true
+    }
+    
+    func setupParse() {
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "KpjKj0ErQW7uNdHnHkTuZosAVjrbIhd7rA9H6qCm"
+            $0.clientKey = ""
+            $0.server = "http://localhost:1337/parse"
+        }
+        Parse.enableLocalDatastore()
+        Parse.initialize(with: configuration)
+        
+        testRetrieve()
+    }
+    
+    func testSave() {
+        let gameScore = PFObject(className:"GameScore")
+        gameScore["score"] = 1337
+        gameScore["playerName"] = "Sean Plott"
+        gameScore["cheatMode"] = false
+        
+        gameScore.saveInBackground {
+            (success: Bool, error: Error?) in
+            if (success) {
+                print("The object has been saved.")
+            } else {
+                print("There was a problem, check error.description")
+            }
+        }
+    }
+    
+    func testRetrieve() {
+
+        let query = PFQuery(className: "GameScore")
+        query.findObjectsInBackground { (objects, error) in
+            guard let objects = objects else { return }
+                
+            for object in objects {
+                let score = object["score"] as! Int
+                let name = object["playerName"] as! String
+                let cheatMode = object["cheatMode"] as! Bool
+                print("Score: \(score)", "PlayerName: \(name)", "CheatMode: \(cheatMode.description)")
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
