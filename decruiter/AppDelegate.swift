@@ -18,18 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = window else { return false }
-        let navigationController = UINavigationController()
-        let generateViewController = GenerateViewController()
-        navigationController.viewControllers = [generateViewController]
-        window.rootViewController = navigationController
+        let appTabbarViewController = AppTabbarController()
+        window.rootViewController = appTabbarViewController
         window.makeKeyAndVisible()
+        
         setupParse()
         return true
     }
     
     func setupParse() {
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "XXXX"
+            $0.applicationId = "KpjKj0ErQW7uNdHnHkTuZosAVjrbIhd7rA9H6qCm"
             $0.clientKey = ""
             $0.server = "http://localhost:1337/parse"
         }
@@ -59,13 +58,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let query = PFQuery(className: "GameScore")
         query.findObjectsInBackground { (objects, error) in
-            guard let objects = objects else { return }
+            if let err = error {
+                print(err.localizedDescription)
+            } else {
+                guard let objects = objects else { return }
                 
-            for object in objects {
-                let score = object["score"] as! Int
-                let name = object["playerName"] as! String
-                let cheatMode = object["cheatMode"] as! Bool
-                print("Score: \(score)", "PlayerName: \(name)", "CheatMode: \(cheatMode.description)")
+                for object in objects {
+                    let score = object["score"] as! Int
+                    let name = object["playerName"] as! String
+                    let cheatMode = object["cheatMode"] as! Bool
+                    print("Score: \(score)", "PlayerName: \(name)", "CheatMode: \(cheatMode.description)")
+                }
             }
         }
     }
@@ -91,7 +94,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

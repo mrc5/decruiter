@@ -24,6 +24,10 @@
 		2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C380EF02059A641009B597F /* UIViewExtension.swift */; };
 		2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */; };
 		2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */; };
+		2CB0053E210348DE00C5C5CF /* AppTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0053D210348DE00C5C5CF /* AppTabbarController.swift */; };
+		2CB005402103495000C5C5CF /* TemplateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0053F2103495000C5C5CF /* TemplateController.swift */; };
+		2CB0054221034B0B00C5C5CF /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0054121034B0B00C5C5CF /* SettingsController.swift */; };
+		2CB0054421034B9C00C5C5CF /* MyTemplatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */; };
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +71,10 @@
 		2C380EF02059A641009B597F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		2CB0053D210348DE00C5C5CF /* AppTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarController.swift; sourceTree = "<group>"; };
+		2CB0053F2103495000C5C5CF /* TemplateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateController.swift; sourceTree = "<group>"; };
+		2CB0054121034B0B00C5C5CF /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTemplatesController.swift; sourceTree = "<group>"; };
 		2CBBD63B205BCC68004B372F /* decruiterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = decruiterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBBD63D205BCC68004B372F /* decruiterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = decruiterUITests.swift; sourceTree = "<group>"; };
 		2CBBD63F205BCC68004B372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				2C380ECE2059A39B009B597F /* AppDelegate.swift */,
+				2CB0053D210348DE00C5C5CF /* AppTabbarController.swift */,
+				2CB0053F2103495000C5C5CF /* TemplateController.swift */,
+				2CB0054321034B9C00C5C5CF /* MyTemplatesController.swift */,
+				2CB0054121034B0B00C5C5CF /* SettingsController.swift */,
 				2C380ED02059A39B009B597F /* GenerateViewController.swift */,
 				2C14C7592078E24700C39462 /* Composer.swift */,
 				2C14C74D2078DFB900C39462 /* DearCell.swift */,
@@ -315,18 +327,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C14C7562078DFBA00C39462 /* TextViewCell.swift in Sources */,
+				2CB0053E210348DE00C5C5CF /* AppTabbarController.swift in Sources */,
 				2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */,
 				2C380ED12059A39B009B597F /* GenerateViewController.swift in Sources */,
 				2C14C7542078DFBA00C39462 /* NameCell.swift in Sources */,
 				2C14C7572078DFBA00C39462 /* ByeCell.swift in Sources */,
 				2C14C75A2078E24700C39462 /* Composer.swift in Sources */,
+				2CB0054221034B0B00C5C5CF /* SettingsController.swift in Sources */,
 				2C380ECF2059A39B009B597F /* AppDelegate.swift in Sources */,
 				2C14C7552078DFBA00C39462 /* DecruitCell.swift in Sources */,
 				2C14C7532078DFBA00C39462 /* DearCell.swift in Sources */,
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
+				2CB0054421034B9C00C5C5CF /* MyTemplatesController.swift in Sources */,
 				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,
+				2CB005402103495000C5C5CF /* TemplateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
