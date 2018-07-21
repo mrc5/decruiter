@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupParse() {
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "KpjKj0ErQW7uNdHnHkTuZosAVjrbIhd7rA9H6qCm"
+            $0.applicationId = "XXXX"
             $0.clientKey = ""
             $0.server = "http://localhost:1337/parse"
         }
