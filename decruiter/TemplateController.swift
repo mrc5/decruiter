@@ -18,6 +18,23 @@ class TemplateController: UIViewController {
         return cv
     }()
     
+    private var emptyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private var emptyViewLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.darkGray
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.medium)
+        label.textAlignment = .center
+        label.numberOfLines = 3
+        label.text = "Es wurde keine Templates gefunden. Versuchen Sie es später erneut."
+        return label
+    }()
+    
     var viewModel: TemplateViewModel?
 
     override func viewDidLoad() {
@@ -30,6 +47,8 @@ class TemplateController: UIViewController {
         viewModel?.viewDelegate = self
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        setupEmptyScreen()
     }
     
     private func setupCollectionView() {
@@ -51,6 +70,25 @@ class TemplateController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    private func setupEmptyScreen() {
+        view.add(emptyView)
+        emptyView.add(emptyViewLabel)
+        
+        emptyView.isHidden = true
+        
+        let constraints = [
+            emptyView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            emptyView.topAnchor.constraint(equalTo: view.topAnchor),
+            emptyView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            emptyViewLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor),
+            emptyViewLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor),
+            emptyViewLabel.leadingAnchor.constraint(equalTo: emptyView.leadingAnchor, constant: 40),
+            emptyViewLabel.trailingAnchor.constraint(equalTo: emptyView.trailingAnchor, constant: -40)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
 }
 
@@ -86,6 +124,12 @@ extension TemplateController: UICollectionViewDelegateFlowLayout {
 extension TemplateController: TemplateViewDelegate {
     
     func showData() {
-        collectionView.reloadData()
+        guard let count = viewModel?.templates.count else { return }
+        if count > 0 {
+            emptyView.isHidden = true
+            collectionView.reloadData()
+        } else {
+            emptyView.isHidden = false
+        }
     }
 }
