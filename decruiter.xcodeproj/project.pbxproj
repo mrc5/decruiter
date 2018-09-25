@@ -29,6 +29,10 @@
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
 		2CCCE537215A1CB10084A1C7 /* iCloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */; };
+		2CCCE539215A29EE0084A1C7 /* AppTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE538215A29EE0084A1C7 /* AppTabbarController.swift */; };
+		2CCCE53B215A2A4B0084A1C7 /* TemplatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE53A215A2A4B0084A1C7 /* TemplatesController.swift */; };
+		2CCCE53D215A2AA60084A1C7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE53C215A2AA60084A1C7 /* SettingsController.swift */; };
+		2CCCE53F215A2AF40084A1C7 /* UserTemplatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE53E215A2AF40084A1C7 /* UserTemplatesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,10 @@
 		2CBBD63F205BCC68004B372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CBBD648205BCD52004B372F /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = decruiterUITests/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudHelper.swift; sourceTree = "<group>"; };
+		2CCCE538215A29EE0084A1C7 /* AppTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarController.swift; sourceTree = "<group>"; };
+		2CCCE53A215A2A4B0084A1C7 /* TemplatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesController.swift; sourceTree = "<group>"; };
+		2CCCE53C215A2AA60084A1C7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		2CCCE53E215A2AF40084A1C7 /* UserTemplatesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTemplatesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,10 @@
 			children = (
 				2C722DBB21541AF700153FBF /* decruiter.entitlements */,
 				2C380ECE2059A39B009B597F /* AppDelegate.swift */,
+				2CCCE538215A29EE0084A1C7 /* AppTabbarController.swift */,
+				2CCCE53E215A2AF40084A1C7 /* UserTemplatesController.swift */,
+				2CCCE53A215A2A4B0084A1C7 /* TemplatesController.swift */,
+				2CCCE53C215A2AA60084A1C7 /* SettingsController.swift */,
 				2C722DC12154207A00153FBF /* TemplatesViewModel.swift */,
 				2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */,
 				2C722DC3215421C900153FBF /* Template.swift */,
@@ -329,8 +341,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C14C7562078DFBA00C39462 /* TextViewCell.swift in Sources */,
+				2CCCE53B215A2A4B0084A1C7 /* TemplatesController.swift in Sources */,
+				2CCCE53F215A2AF40084A1C7 /* UserTemplatesController.swift in Sources */,
 				2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */,
 				2C380ED12059A39B009B597F /* GenerateViewController.swift in Sources */,
+				2CCCE539215A29EE0084A1C7 /* AppTabbarController.swift in Sources */,
 				2C14C7542078DFBA00C39462 /* NameCell.swift in Sources */,
 				2C14C7572078DFBA00C39462 /* ByeCell.swift in Sources */,
 				2C14C75A2078E24700C39462 /* Composer.swift in Sources */,
@@ -341,6 +356,7 @@
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
 				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
 				2C722DC22154207A00153FBF /* TemplatesViewModel.swift in Sources */,
+				2CCCE53D215A2AA60084A1C7 /* SettingsController.swift in Sources */,
 				2CCCE537215A1CB10084A1C7 /* iCloudHelper.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,
