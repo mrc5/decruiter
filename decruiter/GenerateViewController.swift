@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class GenerateViewController: UIViewController {
     
@@ -24,6 +25,8 @@ class GenerateViewController: UIViewController {
     let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye", "ownName"]]
     let copyButton = UIButton()
     let confirmationAlertView = UIView()
+    
+    let viewModel = TemplatesViewModel()
     
     var content: String? {
         didSet {
@@ -52,18 +55,12 @@ class GenerateViewController: UIViewController {
             setupOnboardingAlert()
         }
         
-        let viewModel = TemplatesViewModel()
-        viewModel.addTemplate("Du")
-        
-        viewModel.onError = { error in
-            // Show ErrorScreen based on CKError
-            switch error.code {
-            case .notAuthenticated:
-                print("You are not authenticated!")
-            default:
-                print(error)
-            }
-        }
+        setupDataBinding()
+    }
+    
+    private func setupDataBinding() {
+        viewModel.viewDelegate = self
+        viewModel.refresh()
     }
     
     private func setupOnboardingAlert() {
@@ -288,6 +285,20 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
+    }
+}
+
+extension GenerateViewController: TemplateViewDelegate {
+    func showError(_ error: CKError) {
+        switch error.code {
+        case .notAuthenticated:
+            print("You are not authenticated!")
+        default:
+            print(error)
+        }
+    }
+    func showData() {
+        print(viewModel.templates.count)
     }
 }
 

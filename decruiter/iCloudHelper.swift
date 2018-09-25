@@ -11,23 +11,23 @@ import CloudKit
 
 class iCloudHelper {
     
-    static var iCloudStatus = CKAccountStatus.couldNotDetermine
+    static var status = CKAccountStatus.couldNotDetermine
     
     class func checkForICloud() {
         CKContainer.default().accountStatus { (accountStatus, error) in
             switch accountStatus {
             case .available:
                 print("iCloud Available")
-                iCloudStatus = accountStatus
+                status = accountStatus
             case .noAccount:
                 print("No iCloud account")
-                iCloudStatus = accountStatus
+                status = accountStatus
             case .restricted:
                 print("iCloud restricted")
-                iCloudStatus = accountStatus
+                status = accountStatus
             case .couldNotDetermine:
                 print("Unable to determine iCloud status")
-                iCloudStatus = accountStatus
+                status = accountStatus
             }
         }
     }
