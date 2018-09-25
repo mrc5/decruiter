@@ -13,8 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = window else { return false }
         let navigationController = UINavigationController()
@@ -22,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.viewControllers = [generateViewController]
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        iCloudHelper.checkForICloud()
+        
         return true
     }
 

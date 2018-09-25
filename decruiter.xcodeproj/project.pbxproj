@@ -23,8 +23,12 @@
 		2C380EF12059A641009B597F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C380EF02059A641009B597F /* UIViewExtension.swift */; };
 		2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */; };
 		2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */; };
+		2C722DC021541CA100153FBF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C722DBF21541CA100153FBF /* CloudKit.framework */; };
+		2C722DC22154207A00153FBF /* TemplatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C722DC12154207A00153FBF /* TemplatesViewModel.swift */; };
+		2C722DC4215421C900153FBF /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C722DC3215421C900153FBF /* Template.swift */; };
 		2CBBD63E205BCC68004B372F /* decruiterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD63D205BCC68004B372F /* decruiterUITests.swift */; };
 		2CBBD64A205BCD81004B372F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBD648205BCD52004B372F /* SnapshotHelper.swift */; };
+		2CCCE537215A1CB10084A1C7 /* iCloudHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,10 +69,15 @@
 		2C380EF02059A641009B597F /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2C3AD292205AF86E00A32EF1 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2C3AD294205AFC8D00A32EF1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		2C722DBB21541AF700153FBF /* decruiter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = decruiter.entitlements; sourceTree = "<group>"; };
+		2C722DBF21541CA100153FBF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		2C722DC12154207A00153FBF /* TemplatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewModel.swift; sourceTree = "<group>"; };
+		2C722DC3215421C900153FBF /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		2CBBD63B205BCC68004B372F /* decruiterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = decruiterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBBD63D205BCC68004B372F /* decruiterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = decruiterUITests.swift; sourceTree = "<group>"; };
 		2CBBD63F205BCC68004B372F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CBBD648205BCD52004B372F /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = decruiterUITests/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C722DC021541CA100153FBF /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +113,7 @@
 				2C380EE22059A39B009B597F /* decruiterTests */,
 				2CBBD63C205BCC68004B372F /* decruiterUITests */,
 				2C380ECC2059A39B009B597F /* Products */,
+				2C722DBC21541AF900153FBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,7 +130,11 @@
 		2C380ECD2059A39B009B597F /* decruiter */ = {
 			isa = PBXGroup;
 			children = (
+				2C722DBB21541AF700153FBF /* decruiter.entitlements */,
 				2C380ECE2059A39B009B597F /* AppDelegate.swift */,
+				2C722DC12154207A00153FBF /* TemplatesViewModel.swift */,
+				2CCCE536215A1CB10084A1C7 /* iCloudHelper.swift */,
+				2C722DC3215421C900153FBF /* Template.swift */,
 				2C380ED02059A39B009B597F /* GenerateViewController.swift */,
 				2C14C7592078E24700C39462 /* Composer.swift */,
 				2C14C74D2078DFB900C39462 /* DearCell.swift */,
@@ -146,6 +161,14 @@
 				2C380EE52059A39B009B597F /* Info.plist */,
 			);
 			path = decruiterTests;
+			sourceTree = "<group>";
+		};
+		2C722DBC21541AF900153FBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C722DBF21541CA100153FBF /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2CBBD63C205BCC68004B372F /* decruiterUITests */ = {
@@ -226,15 +249,29 @@
 				TargetAttributes = {
 					2C380ECA2059A39B009B597F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					2C380EDE2059A39B009B597F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2C380ECA2059A39B009B597F;
 					};
 					2CBBD63A205BCC68004B372F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2C380ECA2059A39B009B597F;
 					};
@@ -299,9 +336,12 @@
 				2C14C75A2078E24700C39462 /* Composer.swift in Sources */,
 				2C380ECF2059A39B009B597F /* AppDelegate.swift in Sources */,
 				2C14C7552078DFBA00C39462 /* DecruitCell.swift in Sources */,
+				2C722DC4215421C900153FBF /* Template.swift in Sources */,
 				2C14C7532078DFBA00C39462 /* DearCell.swift in Sources */,
 				2C3AD295205AFC8D00A32EF1 /* UIViewControllerExtension.swift in Sources */,
 				2C0B7B0D20811442006CD214 /* OwnNameCell.swift in Sources */,
+				2C722DC22154207A00153FBF /* TemplatesViewModel.swift in Sources */,
+				2CCCE537215A1CB10084A1C7 /* iCloudHelper.swift in Sources */,
 				2C3AD293205AF86E00A32EF1 /* UIButtonExtension.swift in Sources */,
 				2C14C7582078DFBA00C39462 /* ThankCell.swift in Sources */,
 			);
@@ -466,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = decruiter/decruiter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
@@ -476,8 +517,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mrc5.decruiter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3a9f7978-259f-47c1-bdf5-5d2abbf66930";
-				PROVISIONING_PROFILE_SPECIFIER = "decruiter Development";
-				SWIFT_VERSION = 4.0;
+				PROVISIONING_PROFILE_SPECIFIER = decruiter;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -487,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = decruiter/decruiter.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 9;
@@ -498,7 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "4aadbf1b-2aa6-408c-ae42-43fde9f35b0f";
 				PROVISIONING_PROFILE_SPECIFIER = "decruiter Release";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -515,7 +557,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decruiterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/decruiter.app/decruiter";
 			};
@@ -532,7 +574,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decruiterTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/decruiter.app/decruiter";
 			};
@@ -547,7 +589,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decruiterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = decruiter;
 			};
@@ -562,7 +604,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.decruiterUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = decruiter;
 			};
