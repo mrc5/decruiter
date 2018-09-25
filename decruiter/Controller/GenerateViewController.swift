@@ -54,13 +54,6 @@ class GenerateViewController: UIViewController {
         if !onboardingWasShown {
             setupOnboardingAlert()
         }
-        
-        setupDataBinding()
-    }
-    
-    private func setupDataBinding() {
-        viewModel.viewDelegate = self
-        viewModel.refresh()
     }
     
     private func setupOnboardingAlert() {
@@ -290,12 +283,7 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension GenerateViewController: TemplateViewDelegate {
     func showError(_ error: CKError) {
-        switch error.code {
-        case .notAuthenticated:
-            print("You are not authenticated!")
-        default:
-            print(error)
-        }
+
     }
     func showData() {
         print(viewModel.templates.count)

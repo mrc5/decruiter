@@ -17,8 +17,11 @@ protocol TemplateViewDelegate: class {
 
 class TemplatesViewModel {
     private let database = CKContainer.default().privateCloudDatabase
-    
     weak var viewDelegate: TemplateViewDelegate?
+    
+    init() {
+        refresh()
+    }
     
     var templates = [Template]() {
         didSet {
