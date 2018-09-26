@@ -36,7 +36,9 @@ class TemplatesHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupView() {
+    func setupView() {
+        self.backgroundColor = UIColor.white
+        
         add(dateLabel)
         add(greetingLabel)
         
@@ -48,7 +50,8 @@ class TemplatesHeaderView: UICollectionReusableView {
     
     private func getDate() -> String {
         let formatter = DateFormatter()
-        formatter.locale = Locale.current
+        let locale = Locale.init(identifier: "DE")
+        formatter.locale = locale
         formatter.dateFormat = "EEEE, d. MMMM yyyy"
         return formatter.string(from: Date()).uppercased()
     }
@@ -56,10 +59,10 @@ class TemplatesHeaderView: UICollectionReusableView {
     private func setupContraints() {
         let constraints = [
             dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            dateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            dateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 24),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             greetingLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            greetingLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16),
+            greetingLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
             greetingLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
             greetingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ]

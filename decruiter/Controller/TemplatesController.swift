@@ -125,8 +125,8 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "templatesHeader", for: indexPath)
-            header.backgroundColor = UIColor.white
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "templatesHeader", for: indexPath) as! TemplatesHeaderView
+            header.setupView()
             return header
         default:
             return UICollectionReusableView()
@@ -134,12 +134,16 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 90)
+        return CGSize(width: UIScreen.main.bounds.width, height: 92)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
-        return CGSize(width: width - 32, height: 200)
+        return CGSize(width: width - 32, height: 220)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(viewModel.templates[indexPath.item].salutation)
     }
 }
 
