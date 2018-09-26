@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class GenerateViewController: UIViewController {
     
@@ -24,6 +25,8 @@ class GenerateViewController: UIViewController {
     let data = [["textView"], ["dear", "name", "thank", "decruit", "kThxBye", "ownName"]]
     let copyButton = UIButton()
     let confirmationAlertView = UIView()
+    
+    let viewModel = TemplatesViewModel()
     
     var content: String? {
         didSet {
@@ -45,8 +48,8 @@ class GenerateViewController: UIViewController {
         let barButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         self.navigationItem.rightBarButtonItem = barButton
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         if !onboardingWasShown {
             setupOnboardingAlert()
@@ -65,14 +68,14 @@ class GenerateViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
         }
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
-        if ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -119,7 +122,7 @@ class GenerateViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.groupTableViewBackground
-        tableView.separatorInset = UIEdgeInsetsMake(0, 50, 0, 0)
+        tableView.separatorInset = UIEdgeInsets.init(top: 0, left: 50, bottom: 0, right: 0)
         tableView.alwaysBounceVertical = true
         
         tableView.register(TextViewCell.self, forCellReuseIdentifier: "TextViewCell")
@@ -160,7 +163,7 @@ class GenerateViewController: UIViewController {
         
         copyButton.translatesAutoresizingMaskIntoConstraints = false
         copyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        copyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        copyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         copyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         copyButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
@@ -275,6 +278,19 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
+    }
+}
+
+extension GenerateViewController: TemplateViewDelegate {
+    func showEmpty() {
+    
+    }
+    
+    func showError(_ error: CKError) {
+
+    }
+    func showData() {
+        print(viewModel.templates.count)
     }
 }
 

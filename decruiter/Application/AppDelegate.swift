@@ -13,15 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         guard let window = window else { return false }
-        let navigationController = UINavigationController()
-        let generateViewController = GenerateViewController()
-        navigationController.viewControllers = [generateViewController]
-        window.rootViewController = navigationController
+
+        let tabbarController = AppTabbarController()
+        window.rootViewController = tabbarController
         window.makeKeyAndVisible()
+        
+        iCloudHelper.checkForICloud()
+        
         return true
     }
 

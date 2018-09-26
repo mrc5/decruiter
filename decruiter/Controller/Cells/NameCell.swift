@@ -1,19 +1,19 @@
 //
-//  OwnNameCell.swift
+//  NameCell.swift
 //  decruiter
 //
-//  Created by Marcus on 13.04.18.
+//  Created by Marcus on 19.03.18.
 //  Copyright © 2018 Marcus Hopp. All rights reserved.
 //
 
 import UIKit
 
-class OwnNameCell: UITableViewCell {
+class NameCell: UITableViewCell {
     
     var textField: UITextField!
     var emoji: UILabel!
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
@@ -24,7 +24,7 @@ class OwnNameCell: UITableViewCell {
     
     private func setupView() {
         textField = UITextField()
-        textField.placeholder = "Dein Name"
+        textField.placeholder = "Name"
         textField.delegate = self
         textField.keyboardAppearance = .dark
         add(textField)
@@ -45,12 +45,12 @@ class OwnNameCell: UITableViewCell {
     }
 }
 
-extension OwnNameCell: UITextFieldDelegate {
+extension NameCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let name = textField.text, name != "" else { return }
-        Composer.updateOwnName(name)
+        Composer.updateName(name)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
+         return textField.resignFirstResponder()
     }
 }
