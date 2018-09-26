@@ -12,11 +12,11 @@ import CloudKit
 protocol TemplateViewDelegate: class {
     func showError(_ error: CKError)
     func showData()
+    func showEmpty()
 }
 
 
 class TemplatesViewModel {
-    private let database = CKContainer.default().privateCloudDatabase
     weak var viewDelegate: TemplateViewDelegate?
     
     init() {
@@ -42,11 +42,19 @@ class TemplatesViewModel {
     func refresh() {
         let query = CKQuery(recordType: Template.recordType, predicate: NSPredicate(value: true))
         
-        database.perform(query, inZoneWith: nil) { records, error in
+        iCloudHelper.publicDatabase.perform(query, inZoneWith: nil) { [weak self] records, error in
             if let error = error as? CKError {
-                self.handle(error)
+                self?.handle(error)
             } else if let records = records {
-                self.templates = records.map { record in Template(record: record) }
+                let templates = records.map { record in Template(record: record) }
+                
+                DispatchQueue.main.async {
+                    if templates.isEmpty {
+                        self?.viewDelegate?.showEmpty()
+                    } else {
+                        self?.templates = templates
+                    }
+                }
             }
         }
     }

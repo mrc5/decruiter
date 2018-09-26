@@ -282,6 +282,10 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension GenerateViewController: TemplateViewDelegate {
+    func showEmpty() {
+    
+    }
+    
     func showError(_ error: CKError) {
 
     }

@@ -26,6 +26,16 @@ class TemplatesController: UIViewController {
         return ai
     }()
     
+    lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.semibold)
+        label.textColor = UIColor.lightGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        return label
+    }()
+    
     private let viewModel = TemplatesViewModel()
 
     override func viewDidLoad() {
@@ -78,6 +88,20 @@ class TemplatesController: UIViewController {
     private func setupDataBinding() {
         viewModel.viewDelegate = self
     }
+    
+    private func setupEmptyState() {
+        view.add(emptyLabel)
+        
+        emptyLabel.text = "Leider sind aktuell keine Templates vorhanden"
+        
+        let constraints = [
+            emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
 }
 
 extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -120,8 +144,13 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
 }
 
 extension TemplatesController: TemplateViewDelegate {
+    func showEmpty() {
+        activityIndicator.stopAnimating()
+        setupEmptyState()
+    }
     
     func showData() {
+        emptyLabel.removeFromSuperview()
         activityIndicator.stopAnimating()
         collectionView.reloadData()
     }

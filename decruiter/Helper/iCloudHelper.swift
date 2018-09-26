@@ -13,6 +13,9 @@ class iCloudHelper {
     
     static var status = CKAccountStatus.couldNotDetermine
     
+    static let privateDatabase = CKContainer.default().privateCloudDatabase
+    static let publicDatabase = CKContainer.default().publicCloudDatabase
+    
     class func checkForICloud() {
         CKContainer.default().accountStatus { (accountStatus, error) in
             switch accountStatus {
