@@ -22,6 +22,7 @@ class TemplatesController: UIViewController {
     let activityIndicator: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .gray)
         ai.hidesWhenStopped = true
+        ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
     }()
     
@@ -30,9 +31,22 @@ class TemplatesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupActivityIndicator()
         setupCollectionView()
         setupDataBinding()
         setupView()
+    }
+    
+    private func setupActivityIndicator() {
+        collectionView.add(activityIndicator)
+        
+        let constraints = [
+            activityIndicator.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        activityIndicator.startAnimating()
     }
     
     private func setupView() {
@@ -63,7 +77,6 @@ class TemplatesController: UIViewController {
     
     private func setupDataBinding() {
         viewModel.viewDelegate = self
-        viewModel.refresh()
     }
 }
 
@@ -109,6 +122,7 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
 extension TemplatesController: TemplateViewDelegate {
     
     func showData() {
+        activityIndicator.stopAnimating()
         collectionView.reloadData()
     }
     
