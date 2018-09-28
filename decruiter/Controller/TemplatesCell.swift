@@ -38,9 +38,26 @@ class TemplatesCell: UICollectionViewCell {
         return view
     }()
     
+    private var saveButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "cloud_dl"), for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.setImage(UIImage(named: "cloud_filled"), for: .selected)
+        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    var templateViewModel: TemplatesViewModel!
+    var template: Template!
+    
+    @objc func saveButtonTapped() {
+//        templateViewModel.addToPrivateDatabase(template)
+        saveButton.isSelected = !saveButton.isSelected
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         setupView()
     }
     
@@ -52,17 +69,16 @@ class TemplatesCell: UICollectionViewCell {
         self.layer.cornerRadius = 15
         add(imageView)
         imageView.add(coverView)
-        coverView.add(titleLabel)
+        add(titleLabel)
+        add(saveButton)
         titleLabel.text = "Bestes Template der Welt. Es steckt hier einfach so viel Gutes drin. blalbalsdjflkasnflkjsdaklfjldska"
         
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         setupConstraints()
     }
     
     private func setupConstraints() {
         let constraints = [
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -70,8 +86,20 @@ class TemplatesCell: UICollectionViewCell {
             coverView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             coverView.topAnchor.constraint(equalTo: imageView.topAnchor),
             coverView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            coverView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
+            coverView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            titleLabel.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -8),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            saveButton.heightAnchor.constraint(equalToConstant: 40),
+            saveButton.widthAnchor.constraint(equalToConstant: 50)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    func setupWith(_ viewModel: TemplatesViewModel, template: Template) {
+        self.templateViewModel = viewModel
+        self.template = template
     }
 }

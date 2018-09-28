@@ -11,7 +11,7 @@ import CloudKit
 
 struct Template {
     static let recordType = "Template"
-    fileprivate static let keys = (name : "salutation")
+    static let keys = (salutation : "salutation")
     
     var record: CKRecord
     
@@ -25,10 +25,10 @@ struct Template {
     
     var salutation : String {
         get {
-            return self.record.value(forKey: Template.keys.name) as! String
+            return self.record.value(forKey: Template.keys.salutation) as! String
         }
         set {
-            self.record.setValue(newValue, forKey: Template.keys.name)
+            self.record.setValue(newValue, forKey: Template.keys.salutation)
         }
     }
 }

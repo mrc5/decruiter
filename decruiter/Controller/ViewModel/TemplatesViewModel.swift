@@ -20,7 +20,7 @@ class TemplatesViewModel {
     weak var viewDelegate: TemplateViewDelegate?
     
     init() {
-        refresh()
+        refreshPublic()
     }
     
     var templates = [Template]() {
@@ -39,7 +39,7 @@ class TemplatesViewModel {
         }
     }
 
-    func refresh() {
+    func refreshPublic() {
         let query = CKQuery(recordType: Template.recordType, predicate: NSPredicate(value: true))
         
         iCloudHelper.publicDatabase.perform(query, inZoneWith: nil) { [weak self] records, error in
@@ -55,6 +55,17 @@ class TemplatesViewModel {
                         self?.templates = templates
                     }
                 }
+            }
+        }
+    }
+    
+    func addToPrivateDatabase(_ template: Template) {
+        let record = CKRecord(recordType: Template.recordType)
+        record.setValue(template.salutation, forKey: Template.keys.salutation)
+        
+        iCloudHelper.privateDatabase.save(record) { [weak self] (_, error) in
+            if let error = error as? CKError {
+                self?.handle(error)
             }
         }
     }

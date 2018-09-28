@@ -116,6 +116,7 @@ extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "templatesCell", for: indexPath) as! TemplatesCell
+        cell.setupWith(viewModel, template: viewModel.templates[indexPath.item])
         return cell
     }
 }
@@ -140,10 +141,6 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = UIScreen.main.bounds.width
         return CGSize(width: width - 32, height: 220)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(viewModel.templates[indexPath.item].salutation)
     }
 }
 
