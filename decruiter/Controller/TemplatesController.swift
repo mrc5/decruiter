@@ -47,6 +47,11 @@ class TemplatesController: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
     private func setupActivityIndicator() {
         collectionView.add(activityIndicator)
         
@@ -111,12 +116,12 @@ extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.templates.count
+        return viewModel.publicTemplates.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "templatesCell", for: indexPath) as! TemplatesCell
-        cell.setupWith(viewModel, template: viewModel.templates[indexPath.item])
+        cell.setupWith(viewModel, template: viewModel.publicTemplates[indexPath.item], type: .publicType)
         return cell
     }
 }
@@ -135,7 +140,7 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 92)
+        return CGSize(width: UIScreen.main.bounds.width, height: 96)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -144,7 +149,7 @@ extension TemplatesController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TemplatesController: TemplateViewDelegate {
+extension TemplatesController: TemplatesViewDelegate {
     func showEmpty() {
         activityIndicator.stopAnimating()
         setupEmptyState()

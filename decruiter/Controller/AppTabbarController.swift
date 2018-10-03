@@ -17,8 +17,8 @@ class AppTabbarController: UITabBarController {
     
     private func setupTabbarControllers() {
         let templatesController = TemplatesController()
-        let generateController = GenerateViewController()
-        let userTemplatesController = UserTemplatesController()
+        let generateController = UserTemplatesController()
+        let userTemplatesController = GenerateViewController()
         let settingsController = SettingsController()
         
         templatesController.tabBarItem = UITabBarItem(

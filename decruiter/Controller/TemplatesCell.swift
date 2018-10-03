@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum TemplateType {
+    case publicType
+    case privateType
+}
+
 class TemplatesCell: UICollectionViewCell {
     
     private var titleLabel: UILabel = {
@@ -52,8 +57,13 @@ class TemplatesCell: UICollectionViewCell {
     var template: Template!
     
     @objc func saveButtonTapped() {
-//        templateViewModel.addToPrivateDatabase(template)
         saveButton.isSelected = !saveButton.isSelected
+        
+        if saveButton.isSelected {
+            templateViewModel.addToPrivateDatabase(template)
+        } else {
+            templateViewModel.deleteFromPrivateDatabase(template)
+        }
     }
     
     override init(frame: CGRect) {
@@ -98,8 +108,25 @@ class TemplatesCell: UICollectionViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func setupWith(_ viewModel: TemplatesViewModel, template: Template) {
+    func setupWith(_ viewModel: TemplatesViewModel, template: Template, type: TemplateType) {
         self.templateViewModel = viewModel
         self.template = template
+        
+        switch type {
+        case .privateType:
+            saveButton.isHidden = true
+        case .publicType:
+            saveButton.isHidden = false
+            // Compare actual template with templates in myTemplates to detect selection-state
+            if templateViewModel.privateTemplates.contains(where: {$0.recordId == template.recordId}) {
+                self.saveButton.isSelected = true
+            } else {
+                self.saveButton.isSelected = false
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        saveButton.isSelected = false
     }
 }

@@ -26,8 +26,6 @@ class GenerateViewController: UIViewController {
     let copyButton = UIButton()
     let confirmationAlertView = UIView()
     
-    let viewModel = TemplatesViewModel()
-    
     var content: String? {
         didSet {
             showCopyButton()
@@ -43,7 +41,7 @@ class GenerateViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         setupConfirmationAlert()
 
-        self.title = "decruiter"
+        self.title = "decruiten"
         
         let barButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         self.navigationItem.rightBarButtonItem = barButton
@@ -278,19 +276,6 @@ extension GenerateViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 0
         }
-    }
-}
-
-extension GenerateViewController: TemplateViewDelegate {
-    func showEmpty() {
-    
-    }
-    
-    func showError(_ error: CKError) {
-
-    }
-    func showData() {
-        print(viewModel.templates.count)
     }
 }
 
