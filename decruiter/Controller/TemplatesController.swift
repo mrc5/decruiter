@@ -121,7 +121,7 @@ extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "templatesCell", for: indexPath) as! TemplatesCell
-        cell.setupWith(viewModel, template: viewModel.publicTemplates[indexPath.item], type: .publicType)
+        cell.setupWith(viewModel.publicTemplates[indexPath.item])
         return cell
     }
 }
