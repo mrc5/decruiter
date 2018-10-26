@@ -27,6 +27,14 @@ class TemplatesHeaderView: UICollectionReusableView {
         return label
     }()
     
+    private var offlineIndicatorView: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setImage(UIImage(named: "round_cloud_off_black")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        btn.addTarget(self, action: #selector(didTapCloudButton), for: .touchUpInside)
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -41,6 +49,7 @@ class TemplatesHeaderView: UICollectionReusableView {
         
         add(dateLabel)
         add(greetingLabel)
+        add(offlineIndicatorView)
         
         dateLabel.text = getDate()
         greetingLabel.text = "Hallo Marcus"
@@ -64,8 +73,17 @@ class TemplatesHeaderView: UICollectionReusableView {
             greetingLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
             greetingLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
             greetingLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            greetingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            greetingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            offlineIndicatorView.centerYAnchor.constraint(equalTo: greetingLabel.centerYAnchor),
+            offlineIndicatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            offlineIndicatorView.heightAnchor.constraint(equalToConstant: 30),
+            offlineIndicatorView.widthAnchor.constraint(equalToConstant: 30)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc
+    func didTapCloudButton() {
+        print("CloudButtonTapped")
     }
 }
