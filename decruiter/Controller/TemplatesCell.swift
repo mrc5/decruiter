@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class TemplatesCell: UICollectionViewCell {
     
@@ -43,6 +44,8 @@ class TemplatesCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
+        self.contentView.hero.id = "detail"
     }
     
     required init?(coder aDecoder: NSCoder) {

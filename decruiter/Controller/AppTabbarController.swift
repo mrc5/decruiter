@@ -23,20 +23,20 @@ class AppTabbarController: UITabBarController {
         
         templatesController.tabBarItem = UITabBarItem(
             title: "Templates",
-            image: UIImage(named: "cloud"),
-            selectedImage: UIImage(named: "cloud_filled"))
+            image: UIImage(named: "round_cloud_black"),
+            selectedImage: UIImage(named: "round_cloud_black"))
         generateController.tabBarItem = UITabBarItem(
             title: "My Templates",
-            image: UIImage(named: "my_templates"),
-            selectedImage: UIImage(named: "my_templates_filled"))
+            image: UIImage(named: "round_save_black"),
+            selectedImage: UIImage(named: "round_save_black"))
         userTemplatesController.tabBarItem = UITabBarItem(
             title: "decruiten",
-            image: UIImage(named: "compose"),
-            selectedImage: UIImage(named: "compose_filled"))
+            image: UIImage(named: "round_create_black"),
+            selectedImage: UIImage(named: "round_create_black"))
         settingsController.tabBarItem = UITabBarItem(
             title: "Settings",
-            image: UIImage(named: "settings"),
-            selectedImage: UIImage(named: "settings_filled"))
+            image: UIImage(named: "round_more_horiz_black"),
+            selectedImage: UIImage(named: "round_more_horiz_black"))
         
         let controllers = [templatesController, generateController, userTemplatesController, settingsController]
         self.viewControllers = controllers.map({UINavigationController(rootViewController: $0)})
