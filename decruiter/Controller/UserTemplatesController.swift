@@ -125,6 +125,7 @@ extension UserTemplatesController: PrivateTemplatesViewDelegate {
         switch error.code {
         case .notAuthenticated:
             print("You are not authenticated!")
+            showEmpty()
         default:
             print(error)
         }
@@ -137,7 +138,9 @@ extension UserTemplatesController: PrivateTemplatesViewDelegate {
     }
     
     func showEmpty() {
-        activityIndicator.stopAnimating()
-        setupEmptyState()
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            self?.setupEmptyState()
+        }
     }
 }

@@ -29,10 +29,20 @@ class TemplatesHeaderView: UICollectionReusableView {
     
     private var offlineIndicatorView: UIButton = {
         let btn = UIButton()
+        btn.isHidden = true
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setImage(UIImage(named: "round_cloud_off_black")?.withRenderingMode(.alwaysOriginal), for: .normal)
         btn.addTarget(self, action: #selector(didTapCloudButton), for: .touchUpInside)
         return btn
+    }()
+    
+    private var activityIndicatorView: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.translatesAutoresizingMaskIntoConstraints = false
+        ai.hidesWhenStopped = true
+        ai.startAnimating()
+        ai.tintColor = UIColor.darkGray
+        return ai
     }()
     
     override init(frame: CGRect) {
@@ -50,11 +60,26 @@ class TemplatesHeaderView: UICollectionReusableView {
         add(dateLabel)
         add(greetingLabel)
         add(offlineIndicatorView)
+        add(activityIndicatorView)
         
         dateLabel.text = getDate()
         greetingLabel.text = "Hallo Marcus"
         
         setupContraints()
+        
+        if iCloudHelper.isLoggedIn() {
+            offlineIndicatorView.setImage(
+                UIImage(named: "round_cloud_queue_black")?.withRenderingMode(.alwaysOriginal),
+                for: .normal
+            )
+        } else {
+            offlineIndicatorView.setImage(
+                UIImage(named: "round_cloud_off_black")?.withRenderingMode(.alwaysOriginal),
+                for: .normal
+            )
+        }
+        activityIndicatorView.stopAnimating()
+        offlineIndicatorView.isHidden = false
     }
     
     private func getDate() -> String {
@@ -77,7 +102,11 @@ class TemplatesHeaderView: UICollectionReusableView {
             offlineIndicatorView.centerYAnchor.constraint(equalTo: greetingLabel.centerYAnchor),
             offlineIndicatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             offlineIndicatorView.heightAnchor.constraint(equalToConstant: 30),
-            offlineIndicatorView.widthAnchor.constraint(equalToConstant: 30)
+            offlineIndicatorView.widthAnchor.constraint(equalToConstant: 30),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: greetingLabel.centerYAnchor),
+            activityIndicatorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: 30),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: 30)
         ]
         NSLayoutConstraint.activate(constraints)
     }
