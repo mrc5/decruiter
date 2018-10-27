@@ -7,11 +7,7 @@
 //
 
 import UIKit
-
-enum TemplateType {
-    case publicType
-    case privateType
-}
+import Hero
 
 class TemplatesCell: UICollectionViewCell {
     
@@ -43,32 +39,13 @@ class TemplatesCell: UICollectionViewCell {
         return view
     }()
     
-    private var saveButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "cloud_dl"), for: .normal)
-        button.contentMode = .scaleAspectFit
-        button.setImage(UIImage(named: "cloud_filled"), for: .selected)
-        button.layer.cornerRadius = 5
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    var templateViewModel: TemplatesViewModel!
     var template: Template!
-    
-    @objc func saveButtonTapped() {
-        saveButton.isSelected = !saveButton.isSelected
-        
-        if saveButton.isSelected {
-            templateViewModel.addToPrivateDatabase(template)
-        } else {
-            templateViewModel.deleteFromPrivateDatabase(template)
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
+        self.contentView.hero.id = "detail"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,10 +57,7 @@ class TemplatesCell: UICollectionViewCell {
         add(imageView)
         imageView.add(coverView)
         add(titleLabel)
-        add(saveButton)
         titleLabel.text = "Bestes Template der Welt. Es steckt hier einfach so viel Gutes drin. blalbalsdjflkasnflkjsdaklfjldska"
-        
-        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         setupConstraints()
     }
     
@@ -99,34 +73,12 @@ class TemplatesCell: UICollectionViewCell {
             coverView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            titleLabel.trailingAnchor.constraint(equalTo: saveButton.leadingAnchor, constant: -8),
-            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            saveButton.heightAnchor.constraint(equalToConstant: 40),
-            saveButton.widthAnchor.constraint(equalToConstant: 50)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
-    func setupWith(_ viewModel: TemplatesViewModel, template: Template, type: TemplateType) {
-        self.templateViewModel = viewModel
+    func setupWith(_ template: Template) {
         self.template = template
-        
-        switch type {
-        case .privateType:
-            saveButton.isHidden = true
-        case .publicType:
-            saveButton.isHidden = false
-            // Compare actual template with templates in myTemplates to detect selection-state
-            if templateViewModel.privateTemplates.contains(where: {$0.recordId == template.recordId}) {
-                self.saveButton.isSelected = true
-            } else {
-                self.saveButton.isSelected = false
-            }
-        }
-    }
-    
-    override func prepareForReuse() {
-        saveButton.isSelected = false
     }
 }

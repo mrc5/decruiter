@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = tabbarController
         window.makeKeyAndVisible()
         
-        iCloudHelper.checkForICloud()
+        iCloudHelper.checkForICloudStatus()
         
         return true
     }

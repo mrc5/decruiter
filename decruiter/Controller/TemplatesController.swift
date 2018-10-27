@@ -6,6 +6,7 @@
 //  Copyright © 2018 Marcus Hopp. All rights reserved.
 //
 
+import Hero
 import UIKit
 import CloudKit
 
@@ -107,6 +108,12 @@ class TemplatesController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
     }
+    
+    private func setupDetailWith(_ template: Template) {
+        let controller = TemplateDetailViewController()
+        controller.template = template
+        self.present(controller, animated: true, completion: nil)
+    }
 }
 
 extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -121,8 +128,13 @@ extension TemplatesController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "templatesCell", for: indexPath) as! TemplatesCell
-        cell.setupWith(viewModel, template: viewModel.publicTemplates[indexPath.item], type: .publicType)
+        cell.setupWith(viewModel.publicTemplates[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let template = viewModel.publicTemplates[indexPath.item]
+        setupDetailWith(template)
     }
 }
 

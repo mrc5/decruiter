@@ -16,7 +16,7 @@ class iCloudHelper {
     static let privateDatabase = CKContainer.default().privateCloudDatabase
     static let publicDatabase = CKContainer.default().publicCloudDatabase
     
-    class func checkForICloud() {
+    class func checkForICloudStatus() {
         CKContainer.default().accountStatus { (accountStatus, error) in
             switch accountStatus {
             case .available:
@@ -33,5 +33,10 @@ class iCloudHelper {
                 status = accountStatus
             }
         }
+    }
+    
+    class func isLoggedIn() -> Bool {
+        guard FileManager.default.ubiquityIdentityToken != nil else { return false }
+        return true
     }
 }

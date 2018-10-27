@@ -25,17 +25,8 @@ class TemplatesViewModel {
         }
     }
     
-    var privateTemplates = [Template]() {
-        didSet {
-            self.notificationQueue.addOperation {
-                self.viewDelegate?.showData()
-            }
-        }
-    }
-    
     init() {
         refreshPublic()
-        refreshPrivate()
     }
     
     var notificationQueue = OperationQueue.main
@@ -49,27 +40,6 @@ class TemplatesViewModel {
     
     func constructSectionCount() -> Int {
         return 1
-    }
-    
-    
-    private func refreshPrivate() {
-        let query = CKQuery(recordType: Template.recordType, predicate: NSPredicate(value: true))
-        
-        iCloudHelper.privateDatabase.perform(query, inZoneWith: nil) { [weak self] (records, error) in
-            if let error = error as? CKError {
-                self?.handle(error)
-            } else if let records = records {
-                let templates = records.map { record in Template(record: record) }
-                
-                DispatchQueue.main.async {
-                    if templates.isEmpty {
-                        self?.viewDelegate?.showEmpty()
-                    } else {
-                        self?.privateTemplates = templates
-                    }
-                }
-            }
-        }
     }
     
     private func refreshPublic() {
@@ -92,27 +62,27 @@ class TemplatesViewModel {
         }
     }
     
-    func addToPrivateDatabase(_ template: Template) {
-        let record = CKRecord(recordType: Template.recordType)
-        record.setValue(template.salutation, forKey: Template.keys.salutation)
-        record.setValue(template.recordId, forKey: Template.keys.recordId)
-        
-        iCloudHelper.privateDatabase.save(record) { [weak self] (_, error) in
-            if let error = error as? CKError {
-                self?.handle(error)
-            }
-        }
-    }
+//    func addToPrivateDatabase(_ template: Template) {
+//        let record = CKRecord(recordType: Template.recordType)
+//        record.setValue(template.salutation, forKey: Template.keys.salutation)
+//        record.setValue(template.recordId, forKey: Template.keys.recordId)
+//
+//        iCloudHelper.privateDatabase.save(record) { [weak self] (_, error) in
+//            if let error = error as? CKError {
+//                self?.handle(error)
+//            }
+//        }
+//    }
     
-    func deleteFromPrivateDatabase(_ template: Template) {
-        let record = CKRecord(recordType: Template.recordType)
-        record.setValue(template.salutation, forKey: Template.keys.salutation)
-        record.setValue(template.recordId, forKey: Template.keys.recordId)
-        
-        iCloudHelper.privateDatabase.delete(withRecordID: record.recordID) { [weak self] (_, error) in
-            if let error = error as? CKError {
-                self?.handle(error)
-            }
-        }
-    }
+//    func deleteFromPrivateDatabase(_ template: Template) {
+//        let record = CKRecord(recordType: Template.recordType)
+//        record.setValue(template.salutation, forKey: Template.keys.salutation)
+//        record.setValue(template.recordId, forKey: Template.keys.recordId)
+//
+//        iCloudHelper.privateDatabase.delete(withRecordID: record.recordID) { [weak self] (_, error) in
+//            if let error = error as? CKError {
+//                self?.handle(error)
+//            }
+//        }
+//    }
 }
