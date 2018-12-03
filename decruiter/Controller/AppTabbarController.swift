@@ -19,7 +19,7 @@ class AppTabbarController: UITabBarController {
         let templatesController = TemplatesController()
         let generateController = UserTemplatesController()
         let userTemplatesController = GenerateViewController()
-        let settingsController = SettingsController()
+        let moreController = MoreController()
         
         templatesController.tabBarItem = UITabBarItem(
             title: "Templates",
@@ -33,12 +33,12 @@ class AppTabbarController: UITabBarController {
             title: "decruiten",
             image: UIImage(named: "round_create_black"),
             selectedImage: UIImage(named: "round_create_black"))
-        settingsController.tabBarItem = UITabBarItem(
-            title: "Settings",
+        moreController.tabBarItem = UITabBarItem(
+            title: "More",
             image: UIImage(named: "round_more_horiz_black"),
             selectedImage: UIImage(named: "round_more_horiz_black"))
         
-        let controllers = [templatesController, generateController, userTemplatesController, settingsController]
+        let controllers = [templatesController, generateController, userTemplatesController, moreController]
         self.viewControllers = controllers.map({UINavigationController(rootViewController: $0)})
     }
 }

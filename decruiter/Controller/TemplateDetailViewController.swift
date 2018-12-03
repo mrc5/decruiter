@@ -19,9 +19,14 @@ class TemplateDetailViewController: UIViewController {
         return scrollView
     }()
     
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var imageView: UIImageView = {
         let img = UIImageView()
-        img.hero.id = "detail"
         img.backgroundColor = .blue
         img.image = UIImage(named: "test")
         img.contentMode = .scaleAspectFill
@@ -31,6 +36,7 @@ class TemplateDetailViewController: UIViewController {
     
     lazy var coverView: UIView = {
         let view = UIView()
+        view.hero.id = "detail"
         view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -84,71 +90,109 @@ class TemplateDetailViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
+    
+    lazy var byeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.regular)
+        label.textColor = .darkGray
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    lazy var ownNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.regular)
+        label.textColor = .darkGray
+        label.numberOfLines = 0
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hero.isEnabled = true
-        setupView()
-        
         setData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupView()
     }
     
     private func setData() {
 //        guard let template = template else { return }
         salutationLabel.text = "Hallo Frau Recruiterin"
         thanksLabel.text = "Vielen Dank für Ihre Anfrage und Ihr Interesse an meinen Fähigkeiten."
-        decruitLabel.text = "Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen."
+        decruitLabel.text = "Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen. Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen. Im Moment bin ich nicht an einem Wechsel interessiert und muss Ihnen für die vakante Position leider absagen."
+        byeLabel.text = "Beste Grüße und vielen Dank,"
+        ownNameLabel.text = "Marcus Hopp"
     }
     
     private func setupView() {
         view.add(scrollView)
-        view.add(closeButton)
-        view.add(titleLabel)
         view.backgroundColor = .white
-        scrollView.add(imageView)
-        imageView.add(coverView)
-        scrollView.add(salutationLabel)
-        scrollView.add(thanksLabel)
-        scrollView.add(decruitLabel)
         
-        let constraints = [
+        scrollView.add(contentView)
+        contentView.addSubview(imageView)
+        contentView.addSubview(coverView)
+        contentView.addSubview(closeButton)
+        contentView.addSubview(salutationLabel)
+        contentView.addSubview(thanksLabel)
+        contentView.addSubview(decruitLabel)
+        contentView.addSubview(byeLabel)
+        contentView.addSubview(ownNameLabel)
+        
+        NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 300),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            closeButton.heightAnchor.constraint(equalToConstant: 40),
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            
-            titleLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 16),
-            titleLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -16),
-            titleLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -16),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 250),
             
             coverView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             coverView.topAnchor.constraint(equalTo: imageView.topAnchor),
             coverView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            coverView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            coverView.heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1),
             
-            salutationLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-            salutationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            salutationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            closeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            closeButton.heightAnchor.constraint(equalToConstant: 30),
+            closeButton.widthAnchor.constraint(equalToConstant: 30),
             
+            salutationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            salutationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            salutationLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+
+            thanksLabel.topAnchor.constraint(equalTo: salutationLabel.bottomAnchor, constant: 16),
             thanksLabel.leadingAnchor.constraint(equalTo: salutationLabel.leadingAnchor),
             thanksLabel.trailingAnchor.constraint(equalTo: salutationLabel.trailingAnchor),
-            thanksLabel.topAnchor.constraint(equalTo: salutationLabel.bottomAnchor, constant: 8),
-            
+
+            decruitLabel.topAnchor.constraint(equalTo: thanksLabel.bottomAnchor, constant: 8),
             decruitLabel.leadingAnchor.constraint(equalTo: thanksLabel.leadingAnchor),
             decruitLabel.trailingAnchor.constraint(equalTo: thanksLabel.trailingAnchor),
-            decruitLabel.topAnchor.constraint(equalTo: thanksLabel.bottomAnchor, constant: 8)
-        ]
-        NSLayoutConstraint.activate(constraints)
+
+            byeLabel.topAnchor.constraint(equalTo: decruitLabel.bottomAnchor, constant: 8),
+            byeLabel.leadingAnchor.constraint(equalTo: decruitLabel.leadingAnchor),
+            byeLabel.trailingAnchor.constraint(equalTo: decruitLabel.trailingAnchor),
+
+            ownNameLabel.topAnchor.constraint(equalTo: byeLabel.bottomAnchor, constant: 8),
+            ownNameLabel.leadingAnchor.constraint(equalTo: byeLabel.leadingAnchor),
+            ownNameLabel.trailingAnchor.constraint(equalTo: byeLabel.trailingAnchor),
+            ownNameLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
+        ])
     }
     
     @objc

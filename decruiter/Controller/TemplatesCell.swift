@@ -45,7 +45,8 @@ class TemplatesCell: UICollectionViewCell {
         super.init(frame: frame)
         setupView()
         
-        self.contentView.hero.id = "detail"
+        hero.isEnabled = true
+        contentView.hero.id = "detail"
     }
     
     required init?(coder aDecoder: NSCoder) {
