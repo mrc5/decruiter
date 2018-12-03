@@ -110,6 +110,18 @@ class TemplateDetailViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
+    
+    lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Für später speichern", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.darkGray, for: .highlighted)
+        button.layer.cornerRadius = 22
+        button.backgroundColor = .green
+        button.addTarget(self, action: #selector(saveButtonDidTapped), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,6 +156,8 @@ class TemplateDetailViewController: UIViewController {
         contentView.addSubview(decruitLabel)
         contentView.addSubview(byeLabel)
         contentView.addSubview(ownNameLabel)
+        
+        view.addSubview(saveButton)
         
         NSLayoutConstraint.activate([
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -191,12 +205,22 @@ class TemplateDetailViewController: UIViewController {
             ownNameLabel.topAnchor.constraint(equalTo: byeLabel.bottomAnchor, constant: 8),
             ownNameLabel.leadingAnchor.constraint(equalTo: byeLabel.leadingAnchor),
             ownNameLabel.trailingAnchor.constraint(equalTo: byeLabel.trailingAnchor),
-            ownNameLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
+            ownNameLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -72),
+            
+            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+            saveButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
     
     @objc
     func didTapClose() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
+    func saveButtonDidTapped() {
+        
     }
 }
