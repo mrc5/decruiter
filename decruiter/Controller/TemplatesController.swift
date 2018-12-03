@@ -46,6 +46,8 @@ class TemplatesController: UIViewController {
         setupCollectionView()
         setupDataBinding()
         setupView()
+        
+        self.hero.isEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
